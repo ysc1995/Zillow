@@ -32,13 +32,13 @@ class MainActivity : AppCompatActivity() {
         //viewModel.updateList()
         viewModel.initList()
 
-        val iDataManager: IDataManager = DataManager()
-        iDataManager.getPropertyList(3,"landlord", viewModel)
+        //val iDataManager: IDataManager = DataManager()
+       // iDataManager.getPropertyList(3,"landlord", viewModel)
 
-        var propertyItem = PropertyItem()
-        propertyItem.id = "andy"
-        propertyItem.propertyaddress = "add"
-        viewModel.updateList(propertyItem)
+//        var propertyItem = PropertyItem()
+//        propertyItem.id = "andy"
+//        propertyItem.propertyaddress = "add"
+//        viewModel.updateList(propertyItem)
         //viewModel.updateList(propertyItem)
         //viewModel.updateList(propertyItem)
     }

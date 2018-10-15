@@ -31,8 +31,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:idx_change="@{viewmodel.idx_change}"
-        app:mylist="@{viewmodel.mylist}"
+        app:idx_change="@{viewmodel.property_idx_change}"
+        app:mylist="@{viewmodel.propertylist}"
         />
 </android.support.constraint.ConstraintLayout>
 </layout>

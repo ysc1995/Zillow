@@ -35,7 +35,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //kotlin data binding
-    kapt 'com.android.databinding:compiler:3.1.4'
+
     //rxjava + retrofit
     implementation "io.reactivex.rxjava2:rxjava:2+"
     implementation 'io.reactivex.rxjava2:rxandroid:2+'
