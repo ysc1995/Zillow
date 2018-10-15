@@ -6,8 +6,8 @@ class DataManager:IDataManager {
     companion object {
         val iNetworkHelper : NetworkHelper = NetworkHelper()
     }
-    override fun getPropertyList(i: Int, s: String) {
-        iNetworkHelper.getPropertyList(i,s)
+    override fun getPropertyList(i: Int, s: String, viewModel: com.example.shaochengyang.zillow.viewmodel.ViewModel) {
+        iNetworkHelper.getPropertyList(i,s, viewModel)
     }
 
 
