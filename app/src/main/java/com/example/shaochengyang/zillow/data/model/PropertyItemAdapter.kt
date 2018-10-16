@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.shaochengyang.zillow.R
 import kotlinx.android.synthetic.main.property_item_layout.view.*
 
-class PropertyItemAdapter : RecyclerView.Adapter<PropertyItemAdapter.MyViewHolder>(), BindableAdapter<PropertyItem>{
+class PropertyItemAdapter(var listener_info: MyListener, var listener_remove: MyListener) : RecyclerView.Adapter<PropertyItemAdapter.MyViewHolder>(), BindableAdapter<PropertyItem>{
 
     var mylist = emptyList<PropertyItem>()
 
@@ -34,17 +34,24 @@ class PropertyItemAdapter : RecyclerView.Adapter<PropertyItemAdapter.MyViewHolde
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         var property = mylist.get(position)
-        holder.bind(property)
+        holder.bind(property, listener_info, listener_remove)
     }
 
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        fun bind(myProperty: PropertyItem){
+        fun bind(myProperty: PropertyItem, listener_info: MyListener, listener_remove: MyListener){
             itemView.textView_id.text = myProperty.id
             itemView.textView_address.text = myProperty.propertyaddress
+            itemView.textView_city.text = myProperty.propertycity
+            itemView.button_info.setOnClickListener{listener_info.onItemClicked(myProperty)}
+            itemView.button_remove.setOnClickListener{listener_remove.onItemClicked(myProperty)}
         }
 
+    }
+
+    interface MyListener{
+        fun onItemClicked(myProperty: PropertyItem)
     }
 
 }

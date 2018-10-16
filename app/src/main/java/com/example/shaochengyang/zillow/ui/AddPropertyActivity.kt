@@ -26,7 +26,7 @@ class AddPropertyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_property)
 
-
+        setSupportActionBar(findViewById<View>(R.id.toolbar_map) as Toolbar)
 
 
     }

@@ -7,16 +7,14 @@
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
-        android:layout_width="361dp"
-        android:layout_height="81dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="372dp"
+        android:layout_height="132dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,9 +22,8 @@
 
             <TextView
                 android:id="@+id/textView_id"
-                android:layout_width="114dp"
-                android:layout_height="42dp"
-                android:layout_marginLeft="16dp"
+                android:layout_width="41dp"
+                android:layout_height="36dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="ID"
@@ -35,18 +32,45 @@
 
             <TextView
                 android:id="@+id/textView_address"
-                android:layout_width="128dp"
-                android:layout_height="41dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="256dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="256dp"
+                android:layout_width="115dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="68dp"
                 android:layout_marginTop="16dp"
                 android:text="Address"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_city"
+                android:layout_width="99dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="16dp"
+                android:text="City"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button_info"
+                android:layout_width="73dp"
+                android:layout_height="33dp"
+                android:layout_marginEnd="104dp"
+                android:layout_marginBottom="4dp"
+                android:text="Info"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/button_remove"
+                android:layout_width="73dp"
+                android:layout_height="33dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="Remove"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
