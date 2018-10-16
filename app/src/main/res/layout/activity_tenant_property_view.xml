@@ -78,7 +78,8 @@
                     android:layout_height="80dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="40dp"
-                    android:src="@drawable/map_marker_icon" />
+                    android:src="@drawable/map_marker_icon"
+                    />
 
             </LinearLayout>
 
