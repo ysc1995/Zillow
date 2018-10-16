@@ -1,15 +1,12 @@
-package com.example.shaochengyang.zillow.ui
+package com.example.shaochengyang.zillow.ui.property
 
 import android.databinding.DataBindingUtil
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter
@@ -18,7 +15,7 @@ import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.activity_property.*
 import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter.MyListener
 
-class PropertyActivity : AppCompatActivity() , iPropertyActivity{
+class PropertyActivity : AppCompatActivity() , iPropertyActivity {
 
     var viewModel = ViewModel()
     var  fragaddproperty = FragAddProperty.newInstance()

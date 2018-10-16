@@ -9,9 +9,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.shaochengyang.zillow.R;
-import com.example.shaochengyang.zillow.ui.AddPropertyActivity;
+import com.example.shaochengyang.zillow.ui.property.AddPropertyActivity;
 import com.example.shaochengyang.zillow.ui.MoreActivity;
-import com.example.shaochengyang.zillow.ui.PropertyActivity;
+import com.example.shaochengyang.zillow.ui.property.PropertyActivity;
 
 public class MapFragActivity extends AppCompatActivity {
 

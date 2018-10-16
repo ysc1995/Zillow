@@ -14,7 +14,7 @@
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PropertyActivity"
+    tools:context=".ui.property.PropertyActivity"
     android:id="@+id/property_layout">
 
 
@@ -38,7 +38,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_property"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"

@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.PropertyActivity">
+        <activity android:name=".ui.property.PropertyActivity">
 
 
         </activity>
@@ -37,7 +37,7 @@
         <activity android:name=".map.MapFragActivity">
 
         </activity>
-        <activity android:name=".ui.AddPropertyActivity" />
+        <activity android:name=".ui.property.AddPropertyActivity" />
         <activity android:name=".ui.MoreActivity" />
         <activity android:name=".ui.tenant.TenantPropertyViewActivity">
             <intent-filter>

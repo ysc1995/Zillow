@@ -17,7 +17,7 @@ import com.anychart.enums.Position
 import com.anychart.enums.TooltipPositionMode
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.ui.MoreActivity
-import com.example.shaochengyang.zillow.ui.PropertyActivity
+import com.example.shaochengyang.zillow.ui.property.PropertyActivity
 import java.util.ArrayList
 
 class TenantPropertyViewActivity : AppCompatActivity() {
