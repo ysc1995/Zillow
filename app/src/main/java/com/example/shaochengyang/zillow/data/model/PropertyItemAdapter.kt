@@ -43,6 +43,7 @@ class PropertyItemAdapter : RecyclerView.Adapter<PropertyItemAdapter.MyViewHolde
         fun bind(myProperty: PropertyItem){
             itemView.textView_id.text = myProperty.id
             itemView.textView_address.text = myProperty.propertyaddress
+            itemView.textView_city.text = myProperty.propertycity
         }
 
     }

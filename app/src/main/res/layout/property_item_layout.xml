@@ -24,9 +24,8 @@
 
             <TextView
                 android:id="@+id/textView_id"
-                android:layout_width="114dp"
-                android:layout_height="42dp"
-                android:layout_marginLeft="16dp"
+                android:layout_width="41dp"
+                android:layout_height="36dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="ID"
@@ -35,16 +34,21 @@
 
             <TextView
                 android:id="@+id/textView_address"
-                android:layout_width="128dp"
-                android:layout_height="41dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="256dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="256dp"
+                android:layout_width="115dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="68dp"
                 android:layout_marginTop="16dp"
                 android:text="Address"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_city"
+                android:layout_width="99dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="16dp"
+                android:text="City"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

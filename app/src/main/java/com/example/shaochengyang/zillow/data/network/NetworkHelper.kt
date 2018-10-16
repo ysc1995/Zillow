@@ -1,12 +1,15 @@
 package com.example.shaochengyang.zillow.data.network
 
 import android.util.Log
+import com.example.shaochengyang.zillow.data.model.PropertyItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 
 class NetworkHelper : INetworkHelper{
+
+
     var disposable : Disposable ?= null
     /*init {
         val apiService = ApiService.create()
@@ -20,6 +23,7 @@ class NetworkHelper : INetworkHelper{
                 .subscribe(
                         {result -> //Log.d("thistag", result.property!![0].id)
                          //viewModel.updateList(result.property!![0])
+                            viewModel.mylist = mutableListOf()
                             for(item in result.property!!){
                                 viewModel.updateList(item)
                             }
@@ -28,5 +32,32 @@ class NetworkHelper : INetworkHelper{
                         },
                         { error -> Log.d("thistag",error.message)}
                 )
+    }
+
+    override fun addProperty(propertyItem: PropertyItem, viewModel: ViewModel) {
+
+        var add  = propertyItem.propertyaddress!!
+        var city = propertyItem.propertycity!!
+        var state = propertyItem.propertystate!!
+        var country = propertyItem.propertycountry!!
+        var pro_status = propertyItem.propertystatus!!
+        var price = propertyItem.propertypurchaseprice!!
+        var mortgage = propertyItem.propertymortageinfo!!
+        var userid = ""+49
+        var usertype = "landlord"
+
+        disposable = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    result ->
+                    Log.d("MyTag","Success: "+result)
+                    viewModel.updateList(propertyItem)
+                }
+                        ,{
+                    error -> Log.d("MyTag", "Error "+error)
+                })
+
+
     }
 }

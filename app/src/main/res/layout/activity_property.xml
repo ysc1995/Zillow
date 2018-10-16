@@ -14,13 +14,14 @@
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PropertyActivity">
+    tools:context=".ui.PropertyActivity"
+    android:id="@+id/property_layout">
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_property"
-        android:layout_width="396dp"
-        android:layout_height="630dp"
+        android:layout_width="402dp"
+        android:layout_height="559dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -28,10 +29,22 @@
         app:idx_change="@{viewmodel.idx_change}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:mylist="@{viewmodel.mylist}" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_property"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
 </layout>

@@ -1,14 +1,19 @@
 package com.example.shaochengyang.zillow.data
 
+import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.network.NetworkHelper
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 class DataManager:IDataManager {
+
+
     companion object {
-        val iNetworkHelper : NetworkHelper = NetworkHelper()
+        val NetworkHelper : NetworkHelper = NetworkHelper()
     }
     override fun getPropertyList(i: Int, s: String, viewModel: ViewModel) {
-        iNetworkHelper.getPropertyList(i,s, viewModel)
+        NetworkHelper.getPropertyList(i,s, viewModel)
     }
 
-
+    override fun addProperty(propertyItem: PropertyItem, viewModel: ViewModel) {
+        NetworkHelper.addProperty(propertyItem, viewModel)
+    }
 }
