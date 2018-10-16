@@ -83,6 +83,10 @@ class AddPropertyActivity : AppCompatActivity() {
                 val i_property = Intent(this@AddPropertyActivity, PropertyActivity::class.java)
                 startActivity(i_property)
             }
+            R.id.more_icon -> {
+                val i = Intent(this@AddPropertyActivity,MoreActivity::class.java)
+                startActivity(i)
+            }
 
         }
 
