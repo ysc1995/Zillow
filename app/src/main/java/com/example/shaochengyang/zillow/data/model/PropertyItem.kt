@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 class PropertyItem {
 
+
+
     @SerializedName("propertycountry")
     var propertycountry: String? = null
 
@@ -27,6 +29,17 @@ class PropertyItem {
 
     @SerializedName("propertycity")
     var propertycity: String? = null
+
+    constructor(propertyaddress: String?, propertycity: String?, propertystate: String?, propertycountry: String?, propertystatus: String?, propertypurchaseprice: String?, propertymortageinfo: String?) {
+        this.propertycountry = propertycountry
+        this.propertypurchaseprice = propertypurchaseprice
+        this.propertystatus = propertystatus
+        this.propertymortageinfo = propertymortageinfo
+        this.propertystate = propertystate
+        this.propertyaddress = propertyaddress
+        this.propertycity = propertycity
+    }
+
 
     override fun toString(): String {
         return "PropertyItem{" +
