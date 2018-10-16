@@ -50,4 +50,8 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
     implementation 'com.google.maps:google-maps-services:0.1.20'
 
+    //anychart
+    implementation 'com.github.AnyChart:AnyChart-Android:1.0.3'
+    implementation 'com.android.support:multidex:1.0.3'
+
 }

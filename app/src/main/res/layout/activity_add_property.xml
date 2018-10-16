@@ -4,23 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".map.MapFragActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.AddPropertyActivity">
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.shaochengyang.zillow.map.MapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="610dp"
 
-         />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_map"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="0dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        android:layout_marginBottom="0dp"/>
+        android:theme="?attr/actionBarTheme" />
 </LinearLayout>

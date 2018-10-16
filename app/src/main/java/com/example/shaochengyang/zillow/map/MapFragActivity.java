@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.shaochengyang.zillow.R;
+import com.example.shaochengyang.zillow.ui.AddPropertyActivity;
+import com.example.shaochengyang.zillow.ui.MoreActivity;
 import com.example.shaochengyang.zillow.ui.PropertyActivity;
 
 public class MapFragActivity extends AppCompatActivity {
@@ -36,6 +38,14 @@ public class MapFragActivity extends AppCompatActivity {
             case R.id.property_icon:
                 Intent i_property = new Intent(MapFragActivity.this, PropertyActivity.class);
                 startActivity(i_property);
+                break;
+            case R.id.yourhome_icon:
+                Intent i_addProperty = new Intent(MapFragActivity.this,AddPropertyActivity.class);
+                startActivity(i_addProperty);
+                break;
+            case R.id.more_icon:
+                Intent i = new Intent(MapFragActivity.this,MoreActivity.class);
+                startActivity(i);
                 break;
         }
 
