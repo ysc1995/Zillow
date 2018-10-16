@@ -3,6 +3,8 @@ package com.example.shaochengyang.zillow.viewmodel
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import com.example.shaochengyang.zillow.BR
+import com.example.shaochengyang.zillow.data.DataManager
+import com.example.shaochengyang.zillow.data.IDataManager
 
 
 import com.example.shaochengyang.zillow.data.model.PropertyItem
@@ -23,15 +25,15 @@ class ViewModel: BaseObservable() {
             notifyPropertyChanged(BR.idx_change)
         }
 
-    fun initList(){
+    val DataManager: IDataManager = DataManager()
 
+    fun initList(){
+          DataManager.getPropertyList(3,"landlord", this)
     }
 
     fun updateList(myProperty: PropertyItem){
         mylist.add(myProperty)
-
         idx_change = 0
-
     }
 
 }

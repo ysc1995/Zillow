@@ -4,6 +4,7 @@ import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import com.example.shaochengyang.zillow.viewmodel.ViewModel
 
 class NetworkHelper : INetworkHelper{
     var disposable : Disposable ?= null
@@ -12,7 +13,7 @@ class NetworkHelper : INetworkHelper{
     }*/
     val apiService by lazy { ApiService.create() }
 
-    override fun getPropertyList(i: Int, s: String, viewModel: com.example.shaochengyang.zillow.viewmodel.ViewModel) {
+    override fun getPropertyList(i: Int, s: String, viewModel: ViewModel) {
         disposable = apiService.getPropertyListInfo(i,s)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
