@@ -3,6 +3,7 @@ package com.example.shaochengyang.zillow.data.network
 import com.example.shaochengyang.zillow.data.model.Property
 
 import io.reactivex.Observable
+import retrofit2.Call
 
 
 import retrofit2.Retrofit
@@ -43,6 +44,6 @@ interface ApiService {
                                 @Query("purchase_price") purchase_price:String,
                                 @Query("mortage_info") mortage_info: String,
                                 @Query("userid") userid: String,
-                                @Query("usertype") usertype: String): Observable<String>
+                                @Query("usertype") usertype: String): Call<String>
 
 }

@@ -43,6 +43,13 @@ class ViewModel: BaseObservable() {
 
     fun addList(myProperty: PropertyItem){
         DataManager.addProperty(myProperty, this)
+        DataManager.getPropertyList(50,"landlord", this)
+    }
+
+    fun removeProperty(id: String){
+
+
+        idx_change = 0
     }
 
 }

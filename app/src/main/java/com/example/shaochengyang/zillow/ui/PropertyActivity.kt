@@ -16,6 +16,7 @@ import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter
 import com.example.shaochengyang.zillow.databinding.ActivityPropertyBinding
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.activity_property.*
+import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter.MyListener
 
 class PropertyActivity : AppCompatActivity() , iPropertyActivity{
 
@@ -27,13 +28,22 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity{
         val binding: ActivityPropertyBinding = DataBindingUtil.setContentView(this, R.layout.activity_property)
 
         setSupportActionBar(toolbar_property)
-        val adapter = PropertyItemAdapter()
+        val adapter = PropertyItemAdapter(object : MyListener{
+            override fun onItemClicked(myProperty: PropertyItem) {
+                Log.d("MyTag", myProperty.id +" "+ myProperty.propertyaddress+" "+myProperty.propertycity)
+            }
+        }, object :MyListener{
+            override fun onItemClicked(myProperty: PropertyItem) {
+                Log.d("MyTag", "Remove")
+                viewModel.removeProperty(myProperty.id!!)
+            }
+        })
         recycler_property.adapter = adapter
         recycler_property.layoutManager = LinearLayoutManager(this)
 
         binding.viewmodel = viewModel
 
-        viewModel.initList(49)
+        viewModel.initList(50)
 
 
 

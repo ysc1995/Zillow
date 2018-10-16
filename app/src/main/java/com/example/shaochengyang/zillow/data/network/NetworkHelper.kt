@@ -6,6 +6,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
+import retrofit2.Call
+import retrofit2.Response
+import javax.security.auth.callback.Callback
 
 class NetworkHelper : INetworkHelper{
 
@@ -43,21 +46,23 @@ class NetworkHelper : INetworkHelper{
         var pro_status = propertyItem.propertystatus!!
         var price = propertyItem.propertypurchaseprice!!
         var mortgage = propertyItem.propertymortageinfo!!
-        var userid = ""+49
+        var userid = ""+50
         var usertype = "landlord"
 
-        disposable = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    result ->
-                    Log.d("MyTag","Success: "+result)
-                    viewModel.updateList(propertyItem)
-                }
-                        ,{
-                    error -> Log.d("MyTag", "Error "+error)
-                })
+        //retrofit2.Call<String> call //call = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype)
+        var call = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype)
+        call . enqueue (object : retrofit2.Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d("MyTag", response.body()!!.toString())
+                viewModel.updateList(propertyItem)
 
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.d("MyTag", t.toString())
+                viewModel.updateList(propertyItem)
+            }
+        })
 
     }
 }

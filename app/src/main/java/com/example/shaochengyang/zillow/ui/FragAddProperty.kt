@@ -26,7 +26,11 @@ class FragAddProperty: Fragment() {
         var propertyItem = PropertyItem("add","sh","sh", "China", "120",  "status",  "no")
 
         var v = inflater.inflate(R.layout.frag_add_property, container, false)
-        v.button_add.setOnClickListener { (activity as PropertyActivity).addProperty(propertyItem) }
+        v.button_add.setOnClickListener {
+            var propertyItem = PropertyItem("add","sh","sh",
+                         "China", "120",  "status",  "no")
+            (activity as PropertyActivity).addProperty(propertyItem)
+        }
 
         return v
     }
