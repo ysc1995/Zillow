@@ -26,49 +26,12 @@ class AddPropertyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_property)
 
-        setSupportActionBar(findViewById<View>(R.id.toolbar_map) as Toolbar)
 
-        showPriceChart()
 
 
     }
 
-    fun showPriceChart(){
-        var anyChartView : AnyChartView = findViewById(R.id.anyChartView)
-        val cartesian = AnyChart.column()
-        val data = ArrayList<DataEntry>()
 
-        data.add(ValueDataEntry("2014", 650))
-        data.add(ValueDataEntry("2015", 720))
-        data.add(ValueDataEntry("2016", 830))
-        data.add(ValueDataEntry("2017", 950))
-        data.add(ValueDataEntry("2018", 1100))
-
-        val column = cartesian.column(data)
-
-        column.tooltip()
-                .titleFormat("{%X}")
-                .position(Position.CENTER_BOTTOM)
-                .anchor(Anchor.CENTER_BOTTOM)
-                .offsetX(0.0)
-                .offsetY(5.0)
-                .format("\${%Value}{groupsSeparator: }")
-
-        cartesian.animation(true)
-        cartesian.title("Rental Price for Last 5 Years")
-
-        cartesian.yScale().minimum(0.0)
-
-        cartesian.yAxis(0).labels().format("\${%Value}{groupsSeparator: }")
-
-        cartesian.tooltip().positionMode(TooltipPositionMode.POINT)
-        cartesian.interactivity().hoverMode(HoverMode.BY_X)
-
-        cartesian.xAxis(0).title("Year")
-        cartesian.yAxis(0).title("Price")
-
-        anyChartView.setChart(cartesian)
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
