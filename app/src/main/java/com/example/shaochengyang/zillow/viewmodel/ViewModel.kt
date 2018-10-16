@@ -27,8 +27,8 @@ class ViewModel: BaseObservable() {
 
     val DataManager: IDataManager = DataManager()
 
-    fun initList(){
-          DataManager.getPropertyList(3,"landlord", this)
+    fun initList(id: Int){
+          DataManager.getPropertyList(id,"landlord", this)
     }
 
     fun updateList(myProperty: PropertyItem){

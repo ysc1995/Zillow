@@ -27,7 +27,7 @@ class PropertyActivity : AppCompatActivity() {
         binding.viewmodel = viewModel
 
         //viewModel.updateList()
-        viewModel.initList()
+        viewModel.initList(4)
 
 //        val iDataManager: IDataManager = DataManager()
 //        iDataManager.getPropertyList(3,"landlord", viewModel)
