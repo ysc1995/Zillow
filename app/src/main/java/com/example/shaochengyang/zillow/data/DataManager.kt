@@ -16,4 +16,9 @@ class DataManager:IDataManager {
     override fun addProperty(propertyItem: PropertyItem, viewModel: ViewModel) {
         NetworkHelper.addProperty(propertyItem, viewModel)
     }
+
+    override fun removeProperty(propertyid: String, viewModel: ViewModel) {
+        NetworkHelper.removeProperty(propertyid, viewModel)
+    }
+
 }

@@ -46,4 +46,7 @@ interface ApiService {
                                 @Query("userid") userid: String,
                                 @Query("usertype") usertype: String): Call<String>
 
+    @GET("remove-property.php")
+    fun removeProperty(@Query("propertyid") propertyid: Int): Observable<String>
+
 }

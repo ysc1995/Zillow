@@ -12,7 +12,6 @@ import javax.security.auth.callback.Callback
 
 class NetworkHelper : INetworkHelper{
 
-
     var disposable : Disposable ?= null
     /*init {
         val apiService = ApiService.create()
@@ -54,15 +53,29 @@ class NetworkHelper : INetworkHelper{
         call . enqueue (object : retrofit2.Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 Log.d("MyTag", response.body()!!.toString())
-                viewModel.updateList(propertyItem)
+                viewModel.refreshList()
 
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.d("MyTag", t.toString())
-                viewModel.updateList(propertyItem)
+                viewModel.refreshList()
             }
         })
 
+    }
+
+    override fun removeProperty(propertyid: String, viewModel: ViewModel) {
+        disposable = apiService. removeProperty(propertyid.toInt())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        {result -> Log.d("thistag", "Success")
+                          viewModel.refreshList()
+                        },
+                        { error -> Log.d("thistag",error.message)
+                            viewModel.refreshList()
+                        }
+                )
     }
 }

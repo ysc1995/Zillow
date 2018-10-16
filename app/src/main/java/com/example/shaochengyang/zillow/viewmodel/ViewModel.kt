@@ -48,8 +48,13 @@ class ViewModel: BaseObservable() {
 
     fun removeProperty(id: String){
 
-
+        DataManager.removeProperty(id, this)
         idx_change = 0
+    }
+
+    fun refreshList(){
+        mylist = mutableListOf()
+        DataManager.getPropertyList(50,"landlord", this)
     }
 
 }
