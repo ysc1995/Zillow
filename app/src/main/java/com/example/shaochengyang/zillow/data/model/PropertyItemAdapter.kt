@@ -48,7 +48,6 @@ class PropertyItemAdapter(var listener_info: MyListener, var listener_remove: My
             itemView.textView_pro_status.text = "Pro Status: "+myProperty.propertystatus
             itemView.textView_price.text = "Price: "+myProperty.propertypurchaseprice
             itemView.textView_mortgage.text = "Mortage Info: "+myProperty.propertymortageinfo
-            itemView.button_info.setOnClickListener{listener_info.onItemClicked(myProperty)}
             itemView.button_remove.setOnClickListener{listener_remove.onItemClicked(myProperty)}
         }
 
