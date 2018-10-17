@@ -1,4 +1,5 @@
 package com.example.shaochengyang.zillow.data.network
+import com.example.shaochengyang.zillow.data.IDataManager
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 
@@ -8,4 +9,7 @@ interface INetworkHelper {
     fun removeProperty(propertyid: String, viewModel: ViewModel)
     fun getTenantList(id: String, viewModel: ViewModel)
 
+    fun getAllPropertyInfo(listener : IDataManager.onAllPropertyInfoListener) {
+
+    }
 }

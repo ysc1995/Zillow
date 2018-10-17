@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.network.NetworkHelper
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
-class DataManager:IDataManager {
+class DataManager :IDataManager {
 
     companion object {
         val NetworkHelper : NetworkHelper = NetworkHelper()
@@ -24,4 +24,11 @@ class DataManager:IDataManager {
     override fun getTenantList(id: String, viewModel: ViewModel) {
         NetworkHelper.getTenantList(id, viewModel)
     }
+
+    override fun getAllPropertyInfo(listener : IDataManager.onAllPropertyInfoListener) {
+        NetworkHelper.getAllPropertyInfo(listener)
+    }
+
+
+
 }

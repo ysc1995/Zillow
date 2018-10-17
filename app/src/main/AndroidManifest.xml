@@ -38,6 +38,20 @@
 
         </activity>
         <activity android:name=".ui.TenantInfoActivity">
+        <activity android:name=".map.MapFragActivity">
+
+        </activity>
+        <activity android:name=".ui.AddPropertyActivity" />
+        <activity android:name=".ui.MoreActivity" />
+        <activity android:name=".ui.tenant.TenantPropertyViewActivity" />
+        <activity android:name=".ui.tenant.PropertyMapActivity" />
+        <activity android:name=".crash.CrashAnazliticsActivity" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="bccaf55c82db0117f068ef7f5d1e885223b3045c" />
+
+        <activity android:name=".map.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

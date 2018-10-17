@@ -1,16 +1,23 @@
 package com.example.shaochengyang.zillow.viewmodel
 
+import android.content.Intent
 import android.databinding.BaseObservable
 import android.databinding.Bindable
-import android.util.Log
+import android.support.v4.content.ContextCompat.startActivity
 import com.example.shaochengyang.zillow.BR
 import com.example.shaochengyang.zillow.data.DataManager
 import com.example.shaochengyang.zillow.data.IDataManager
+import com.example.shaochengyang.zillow.data.model.AllPropertyItem
+
+
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.model.TenantInfo
 import com.example.shaochengyang.zillow.data.model.TenantsItem
+import com.example.shaochengyang.zillow.map.MapFragActivity
+import com.example.shaochengyang.zillow.map.MapFragment
+import com.example.shaochengyang.zillow.ui.PropertyActivity
 
-class ViewModel: BaseObservable() {
+class ViewModel : BaseObservable() {
 
     @get: Bindable
     var mylist :MutableList<PropertyItem> = mutableListOf()

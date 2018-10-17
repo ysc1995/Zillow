@@ -1,6 +1,8 @@
 package com.example.shaochengyang.zillow.data.network
 
 import android.util.Log
+import com.example.shaochengyang.zillow.data.IDataManager
+import com.example.shaochengyang.zillow.data.model.AllPropertyItem
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -9,13 +11,35 @@ import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import retrofit2.Call
 import retrofit2.Response
 
-class NetworkHelper : INetworkHelper{
+class NetworkHelper : INetworkHelper {
 
-    var disposable : Disposable ?= null
+    var disposable: Disposable? = null
     /*init {
         val apiService = ApiService.create()
     }*/
     val apiService by lazy { ApiService.create() }
+
+    override fun getAllPropertyInfo(listener : IDataManager.onAllPropertyInfoListener) {
+        disposable = apiService.getAllPropertyInfo()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        { result ->
+                            Log.d("thistag", result.property[0].id)
+                            var allPropertyList: MutableList<AllPropertyItem> = mutableListOf()
+                            for (item in result.property!!){
+                                allPropertyList.add(item)
+                            }
+                            listener.passAllPropertyList(allPropertyList)
+
+
+
+                        },
+                        { error ->
+                            Log.d("thistag", error.message)
+                        }
+                )
+    }
 
     override fun getPropertyList(i: Int, s: String, viewModel: ViewModel) {
         Log.d("MyTag","network")

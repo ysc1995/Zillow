@@ -1,5 +1,6 @@
 package com.example.shaochengyang.zillow.data.network
 
+import com.example.shaochengyang.zillow.data.model.AllProperty
 import com.example.shaochengyang.zillow.data.model.Property
 import com.example.shaochengyang.zillow.data.model.TenantInfo
 import io.reactivex.Observable
@@ -34,6 +35,11 @@ interface ApiService {
     userid=3&
     usertype=landlord
      */
+    //http://rjtmobile.com/aamir/property-mgmt/pro_mgt_property_all.php
+
+    @GET("pro_mgt_property_all.php")
+    fun getAllPropertyInfo():Observable<AllProperty>
+
     @GET("property.php")
     fun getPropertyListInfo(@Query("userid") userid: String,
                             @Query("usertype") usertype: String): Observable<Property>

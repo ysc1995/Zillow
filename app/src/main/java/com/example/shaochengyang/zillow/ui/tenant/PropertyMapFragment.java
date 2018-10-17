@@ -28,11 +28,12 @@ public class PropertyMapFragment extends Fragment implements
     MapView mMapView;
     private GoogleMap mMap;
 
-    String lati = PropertyMapActivity.getLati();
-    String longi = PropertyMapActivity.getLongi();
 
-    String departLati = lati;
-    String departLong = longi;
+    String departLati ;
+    String departLong ;
+
+
+
 
     String departCity = "Barcelona";
 
@@ -44,8 +45,11 @@ public class PropertyMapFragment extends Fragment implements
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
 
+        PropertyMapActivity propertyMapActivity = (PropertyMapActivity) getActivity();
+        departLati = propertyMapActivity.getLati();
+        departLong = propertyMapActivity.getLongi();
 
-        setLocation("30", "0");
+        setLocation(departLati, departLong);
 
 
         mMapView.onResume(); // needed to get the map to display immediately
