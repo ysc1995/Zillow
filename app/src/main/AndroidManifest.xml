@@ -20,8 +20,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.property.PropertyActivity">
 
-
-
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -35,7 +33,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".map.MapFragActivity"></activity>
+        <activity android:name=".map.MapFragActivity">
+
+        </activity>
         <activity android:name=".ui.property.AddPropertyActivity" />
         <activity android:name=".ui.MoreActivity" />
         <activity android:name=".ui.tenant.TenantPropertyViewActivity">
@@ -60,6 +60,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.chat.SignInActivity">
+
+        </activity>
+
+        <activity android:name=".ui.chat.MainActivity">
+
+        </activity>
+
     </application>
 
 </manifest>

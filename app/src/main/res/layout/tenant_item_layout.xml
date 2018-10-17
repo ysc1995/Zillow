@@ -22,8 +22,8 @@
 
             <TextView
                 android:id="@+id/textView_tenant_name"
-                android:layout_width="93dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Name"
@@ -32,8 +32,8 @@
 
             <TextView
                 android:id="@+id/textView_tenant_email"
-                android:layout_width="93dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="44dp"
                 android:text="Email"
@@ -42,8 +42,8 @@
 
             <TextView
                 android:id="@+id/textView_tenant_mobile"
-                android:layout_width="93dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="80dp"
                 android:text="Mobile"
@@ -52,8 +52,8 @@
 
             <TextView
                 android:id="@+id/textView_tenant_address"
-                android:layout_width="93dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="112dp"
                 android:text="Address"

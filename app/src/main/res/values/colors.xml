@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorFragBackground">#bdf7f2</color>
+    <color name="colorChatBackgroundself">#88e7dd</color>
+    <color name="colorChatBackgroundother">#b4f290</color>
 </resources>
