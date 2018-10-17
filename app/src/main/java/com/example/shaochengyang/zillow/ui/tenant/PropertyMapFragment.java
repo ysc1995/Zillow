@@ -29,10 +29,9 @@ public class PropertyMapFragment extends Fragment implements
     private GoogleMap mMap;
 
 
-    String departLati ;
-    String departLong ;
-
-
+    String departLati;
+    String departLong;
+    String price;
 
 
     String departCity = "Barcelona";
@@ -48,7 +47,7 @@ public class PropertyMapFragment extends Fragment implements
         PropertyMapActivity propertyMapActivity = (PropertyMapActivity) getActivity();
         departLati = propertyMapActivity.getLati();
         departLong = propertyMapActivity.getLongi();
-
+        price = propertyMapActivity.getPrice();
         setLocation(departLati, departLong);
 
 
@@ -109,18 +108,10 @@ public class PropertyMapFragment extends Fragment implements
                                  public void onMapReady(GoogleMap googleMap) {
                                      mMap = googleMap;
 
-        /*LatLng barcelona = new LatLng(41.385064,2.173403);
-        mMap.addMarker(new MarkerOptions().position(barcelona).title("Marker in Barcelona"));
-        LatLng madrid = new LatLng(40.416775,-3.70379);
-        mMap.addMarker(new MarkerOptions().position(madrid).title("Marker in Madrid"));
-        LatLng zaragoza = new LatLng(41.648823,-0.889085);*/
-
-                                     //Define list to get all latlng for the route
-                                     List<LatLng> path = new ArrayList();
 
                                      LatLng fromCity = new LatLng(Double.parseDouble(departLati),
                                              Double.parseDouble(departLong));
-                                     mMap.addMarker(new MarkerOptions().position(fromCity).title("Marker in " + departCity));
+                                     mMap.addMarker(new MarkerOptions().position(fromCity).title(price + "$"));
 
 
                                      mMap.getUiSettings().setZoomControlsEnabled(true);
