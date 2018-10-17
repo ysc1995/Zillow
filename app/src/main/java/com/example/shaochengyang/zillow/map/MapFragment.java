@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.shaochengyang.zillow.R;
 import com.example.shaochengyang.zillow.data.model.AllPropertyItem;
+import com.example.shaochengyang.zillow.data.model.MapPassItem;
 import com.example.shaochengyang.zillow.ui.tenant.TenantPropertyViewActivity;
 import com.example.shaochengyang.zillow.viewmodel.ViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,7 +43,7 @@ public class MapFragment extends Fragment implements
     String departLati ;
     String departLong ;
     String price;
-
+    int count;
     List<AllPropertyItem> list;
 
     /*IDataManager iDataManager;*/
@@ -61,12 +62,20 @@ public class MapFragment extends Fragment implements
 
         MapFragActivity mapFragActivity = (MapFragActivity) getActivity();
         list = mapFragActivity.getList();
-
+        List<MapPassItem> passList = new ArrayList<>();
         for(int i = 0 ; i < list.size(); i++){
             if(!list.get(i).getPropertylatitude().equals("")&&!list.get(i).getPropertylongitude().equals("")) {
                 price = list.get(i).getPropertypurchaseprice();
-                setLocation(list.get(i).getPropertylatitude(), list.get(i).getPropertylongitude(),price,i);
+                String lati = list.get(i).getPropertylatitude();
+                String longi = list.get(i).getPropertylongitude();
+
+                MapPassItem mapPassItem = new MapPassItem(lati,longi,i);
+
+                passList.add(mapPassItem);
+                //setLocation(list.get(i).getPropertylatitude(), list.get(i).getPropertylongitude(),price,i);
             }
+
+            setLocation(passList);
         }
 
 
@@ -80,6 +89,65 @@ public class MapFragment extends Fragment implements
         }
 
         return rootView;
+    }
+
+    private void setLocation(final List<MapPassItem> passList) {
+
+
+
+
+        mMapView.getMapAsync(new OnMapReadyCallback() {
+                                 @Override
+                                 public void onMapReady(GoogleMap googleMap) {
+                                     mMap = googleMap;
+                                     for(int i = 0 ; i < passList.size() ; i++){
+                                         departLati=passList.get(i).getLati();
+                                         departLong = passList.get(i).getLongi();
+                                         count = passList.get(i).getCount();
+
+                                         LatLng fromCity = new LatLng(Double.parseDouble(departLati),
+                                                 Double.parseDouble(departLong));
+                                         MarkerOptions marker = new MarkerOptions().position(fromCity).title(""+count);
+
+                                         mMap.addMarker(marker);
+                                     }
+
+
+
+
+
+                                     mMap.setOnMarkerClickListener(new OnMarkerClickListener(){
+
+                                         @Override
+                                         public boolean onMarkerClick(Marker marker) {
+
+
+                                             Intent i = new Intent(getActivity(), TenantPropertyViewActivity.class);
+                                             /*i.putExtra("lati",marker.getPosition().latitude);
+                                             i.putExtra("long",marker.getPosition().longitude);*/
+                                             i.putExtra("count",marker.getTitle());
+
+                                             Parcelable[] parcelist = new Parcelable[list.size()];
+                                             for(int k = 0 ; k < list.size(); k++){
+                                                 parcelist[k] = list.get(k);
+                                             }
+                                             i.putExtra("list",parcelist);
+                                             startActivity(i);
+                                             //Toast.makeText(getActivity(), ""+marker.getTitle()+marker.getPosition().latitude+marker.getPosition(), Toast.LENGTH_SHORT).show();
+                                             return false;
+                                         }
+                                     } );
+
+
+
+
+
+                                     mMap.getUiSettings().setZoomControlsEnabled(true);
+
+                                     //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromCity, 6));
+                                 }
+                             }
+        );
     }
 
 
@@ -115,7 +183,7 @@ public class MapFragment extends Fragment implements
     }
 
 
-    public void setLocation(String fromCityLati, String fromCityLong, final String propertyPrice, final int count) {
+    /*public void setLocation(String fromCityLati, String fromCityLong, final String propertyPrice, final int count) {
         departLati = fromCityLati;
         departLong = fromCityLong;
 
@@ -142,8 +210,8 @@ public class MapFragment extends Fragment implements
 
 
                                              Intent i = new Intent(getActivity(), TenantPropertyViewActivity.class);
-                                             /*i.putExtra("lati",marker.getPosition().latitude);
-                                             i.putExtra("long",marker.getPosition().longitude);*/
+                                             *//*i.putExtra("lati",marker.getPosition().latitude);
+                                             i.putExtra("long",marker.getPosition().longitude);*//*
                                              i.putExtra("count",marker.getTitle());
 
                                              Parcelable[] parcelist = new Parcelable[list.size()];
@@ -169,7 +237,7 @@ public class MapFragment extends Fragment implements
         );
 
 
-    }
+    }*/
 
 
 
