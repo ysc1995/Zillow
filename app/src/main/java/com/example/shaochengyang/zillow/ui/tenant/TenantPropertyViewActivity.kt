@@ -16,13 +16,18 @@ import com.anychart.enums.HoverMode
 import com.anychart.enums.Position
 import com.anychart.enums.TooltipPositionMode
 import com.example.shaochengyang.zillow.R
+import com.example.shaochengyang.zillow.data.IDataManager
 import com.example.shaochengyang.zillow.data.model.AllPropertyItem
+import com.example.shaochengyang.zillow.map.MapFragActivity
 import com.example.shaochengyang.zillow.ui.MoreActivity
 import com.example.shaochengyang.zillow.ui.property.PropertyActivity
+import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.activity_tenant_property_view.*
 import java.util.ArrayList
 
 class TenantPropertyViewActivity : AppCompatActivity() {
+
+    var viewModel = ViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +50,17 @@ class TenantPropertyViewActivity : AppCompatActivity() {
         var long = propertyItemList[Integer.parseInt(count)].propertylongitude
         var item = propertyItemList[Integer.parseInt(count)]
         var price = item.propertypurchaseprice
+        var address = item.propertyaddress
+        var city = item.propertycity
+        var state = item.propertystate
+        var userid = item.propertyuserid
+        var mortage = item.propertymortageinfo
+
 
         tv_address.text = propertyItemList[Integer.parseInt(count)].propertyaddress + ","
         tv_address2.text = propertyItemList[Integer.parseInt(count)].propertycity + "," + item.propertystate + "," + item.propertycountry
         tv_payment.text = "Est.Refi.Payment: $" + item.propertypurchaseprice + "/mo"
-
+        tv_mortage.text = mortage
 
         Img_map_marker.setOnClickListener {
             val i = Intent(this@TenantPropertyViewActivity, PropertyMapActivity::class.java)
@@ -59,17 +70,24 @@ class TenantPropertyViewActivity : AppCompatActivity() {
             startActivity(i)
         }
 
+        button_contactOwner.setOnClickListener{
+
+        }
+
+
         button_rentthis.setOnClickListener {
-            addTenant();
+            val i = Intent(this@TenantPropertyViewActivity, TenantInputInfoActivity::class.java)
+            i.putExtra("price",price)
+            i.putExtra("address",address)
+            i.putExtra("city",city)
+            i.putExtra("state",state)
+            i.putExtra("userid",userid)
+            startActivity(i)
 
         }
     }
 
-    private fun addTenant() {
-        //TODO add api
-        //http://rjtmobile.com/aamir/property-mgmt/pro_mgt_add_tenants.php?
-        // name=aam&email=aah@aah.com&address=complte address&mobile=9876543210&propertyid=1&landlordid=3
-    }
+
 
 
     fun showPriceChart() {
