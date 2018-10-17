@@ -52,10 +52,10 @@ class TenantPropertyViewActivity : AppCompatActivity() {
 
         Img_map_marker.setOnClickListener {
             val i = Intent(this@TenantPropertyViewActivity, PropertyMapActivity::class.java)
-            i.putExtra("lati",lati)
-            i.putExtra("long",long)
-            startActivity(i)
-        }
+        i.putExtra("lati",lati)
+        i.putExtra("long",long)
+        startActivity(i)
+    }
 
         button_rentthis.setOnClickListener{
             addTenant();
