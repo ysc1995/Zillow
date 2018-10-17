@@ -44,20 +44,22 @@ class TenantPropertyViewActivity : AppCompatActivity() {
         var lati = propertyItemList[Integer.parseInt(count)].propertylatitude
         var long = propertyItemList[Integer.parseInt(count)].propertylongitude
         var item = propertyItemList[Integer.parseInt(count)]
+        var price = item.propertypurchaseprice
 
         tv_address.text = propertyItemList[Integer.parseInt(count)].propertyaddress + ","
-        tv_address2.text = propertyItemList[Integer.parseInt(count)].propertycity + "," + item.propertystate + ","+ item.propertycountry
-        tv_payment.text = "Est.Refi.Payment: $"+item.propertypurchaseprice+"/mo"
+        tv_address2.text = propertyItemList[Integer.parseInt(count)].propertycity + "," + item.propertystate + "," + item.propertycountry
+        tv_payment.text = "Est.Refi.Payment: $" + item.propertypurchaseprice + "/mo"
 
 
         Img_map_marker.setOnClickListener {
             val i = Intent(this@TenantPropertyViewActivity, PropertyMapActivity::class.java)
-        i.putExtra("lati",lati)
-        i.putExtra("long",long)
-        startActivity(i)
-    }
+            i.putExtra("lati", lati)
+            i.putExtra("long", long)
+            i.putExtra("price", price)
+            startActivity(i)
+        }
 
-        button_rentthis.setOnClickListener{
+        button_rentthis.setOnClickListener {
             addTenant();
 
         }
@@ -70,8 +72,8 @@ class TenantPropertyViewActivity : AppCompatActivity() {
     }
 
 
-    fun showPriceChart(){
-        var anyChartView : AnyChartView = findViewById(R.id.anyChartView)
+    fun showPriceChart() {
+        var anyChartView: AnyChartView = findViewById(R.id.anyChartView)
         val cartesian = AnyChart.column()
         val data = ArrayList<DataEntry>()
 

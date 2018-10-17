@@ -26,4 +26,9 @@ public class PropertyMapActivity extends AppCompatActivity {
         String longi = getIntent().getExtras().getString("long");
         return longi;
     }
+
+    public String getPrice(){
+        String price = getIntent().getExtras().getString("price");
+        return price;
+    }
 }
