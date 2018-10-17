@@ -6,22 +6,24 @@ import android.os.Bundle;
 import com.example.shaochengyang.zillow.R;
 
 public class PropertyMapActivity extends AppCompatActivity {
-    static String lati, longi;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_map);
 
-        lati = getIntent().getExtras().getString("lati");
-        longi = getIntent().getExtras().getString("longi");
+
+
     }
 
-    public static String getLati(){
+    public String getLati(){
+        String lati = getIntent().getExtras().getString("lati");
         return lati;
     }
 
-    public static String getLongi(){
+    public String getLongi(){
+        String longi = getIntent().getExtras().getString("long");
         return longi;
     }
 }

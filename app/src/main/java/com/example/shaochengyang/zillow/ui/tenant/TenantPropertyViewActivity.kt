@@ -16,6 +16,7 @@ import com.anychart.enums.HoverMode
 import com.anychart.enums.Position
 import com.anychart.enums.TooltipPositionMode
 import com.example.shaochengyang.zillow.R
+import com.example.shaochengyang.zillow.data.model.AllPropertyItem
 import com.example.shaochengyang.zillow.ui.MoreActivity
 import com.example.shaochengyang.zillow.ui.PropertyActivity
 import kotlinx.android.synthetic.main.activity_tenant_property_view.*
@@ -31,8 +32,23 @@ class TenantPropertyViewActivity : AppCompatActivity() {
 
         showPriceChart()
 
-        var lati = intent.getStringExtra("lati")
-        var long = intent.getStringExtra("long")
+        val list = intent.getParcelableArrayExtra("list")
+        val count = intent.getStringExtra("count")
+        val propertyItemList = ArrayList<AllPropertyItem>()
+        for (i in list.indices) {
+
+            propertyItemList.add(list[i] as AllPropertyItem)
+        }
+
+
+        var lati = propertyItemList[Integer.parseInt(count)].propertylatitude
+        var long = propertyItemList[Integer.parseInt(count)].propertylongitude
+        var item = propertyItemList[Integer.parseInt(count)]
+
+        tv_address.text = propertyItemList[Integer.parseInt(count)].propertyaddress + ","
+        tv_address2.text = propertyItemList[Integer.parseInt(count)].propertycity + "," + item.propertystate + ","+ item.propertycountry
+        tv_payment.text = "Est.Refi.Payment: $"+item.propertypurchaseprice+"/mo"
+
 
         Img_map_marker.setOnClickListener {
             val i = Intent(this@TenantPropertyViewActivity, PropertyMapActivity::class.java)
@@ -40,8 +56,18 @@ class TenantPropertyViewActivity : AppCompatActivity() {
             i.putExtra("long",long)
             startActivity(i)
         }
+
+        button_rentthis.setOnClickListener{
+            addTenant();
+
+        }
     }
 
+    private fun addTenant() {
+        //TODO add api
+        //http://rjtmobile.com/aamir/property-mgmt/pro_mgt_add_tenants.php?
+        // name=aam&email=aah@aah.com&address=complte address&mobile=9876543210&propertyid=1&landlordid=3
+    }
 
 
     fun showPriceChart(){

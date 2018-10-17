@@ -1,18 +1,18 @@
 package com.example.shaochengyang.zillow.map;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.shaochengyang.zillow.R;
+import com.example.shaochengyang.zillow.data.model.AllPropertyItem;
 import com.example.shaochengyang.zillow.ui.tenant.TenantPropertyViewActivity;
+import com.example.shaochengyang.zillow.viewmodel.ViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
@@ -22,45 +22,52 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.maps.DirectionsApi;
-import com.google.maps.DirectionsApiRequest;
 import com.google.maps.GeoApiContext;
-import com.google.maps.model.DirectionsLeg;
-import com.google.maps.model.DirectionsResult;
-import com.google.maps.model.DirectionsRoute;
-import com.google.maps.model.DirectionsStep;
-import com.google.maps.model.EncodedPolyline;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MapFragment extends Fragment implements
-        ActivityCompat.OnRequestPermissionsResultCallback {
+        ActivityCompat.OnRequestPermissionsResultCallback{
+
     private static final String TAG = "MapViewFragment";
 
     MapView mMapView;
     private GoogleMap mMap;
 
 
-    String departLati = "41.385064";
-    String departLong = "2.173403";
-    String arrLati = "40.416775";
-    String arrLong = "-3.70379";
-    String departCity = "Barcelona";
-    String arrCity = "Madrid";
+    String departLati ;
+    String departLong ;
+    String price;
+
+    List<AllPropertyItem> list;
+
+    /*IDataManager iDataManager;*/
+
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public synchronized View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_map, container, false);
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
 
+       /* iDataManager = new DataManager();*/
+        /*iDataManager.getAllPropertyInfo(this);*/
 
-        setLocation("30", "0", "30", "2.40");
+        MapFragActivity mapFragActivity = (MapFragActivity) getActivity();
+        list = mapFragActivity.getList();
+
+        for(int i = 0 ; i < list.size(); i++){
+            if(!list.get(i).getPropertylatitude().equals("")&&!list.get(i).getPropertylongitude().equals("")) {
+                price = list.get(i).getPropertypurchaseprice();
+                setLocation(list.get(i).getPropertylatitude(), list.get(i).getPropertylongitude(),price,i);
+            }
+        }
 
 
         mMapView.onResume(); // needed to get the map to display immediately
@@ -71,7 +78,6 @@ public class MapFragment extends Fragment implements
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         return rootView;
     }
@@ -109,50 +115,48 @@ public class MapFragment extends Fragment implements
     }
 
 
-    public void setLocation(String fromCityLati, String fromCityLong,
-                            String toCityLati, String toCityLong) {
+    public void setLocation(String fromCityLati, String fromCityLong, final String propertyPrice, final int count) {
         departLati = fromCityLati;
         departLong = fromCityLong;
-        arrLati = toCityLati;
-        arrLong = toCityLong;
+
 
         mMapView.getMapAsync(new OnMapReadyCallback() {
                                  @Override
                                  public void onMapReady(GoogleMap googleMap) {
                                      mMap = googleMap;
 
-        /*LatLng barcelona = new LatLng(41.385064,2.173403);
-        mMap.addMarker(new MarkerOptions().position(barcelona).title("Marker in Barcelona"));
-        LatLng madrid = new LatLng(40.416775,-3.70379);
-        mMap.addMarker(new MarkerOptions().position(madrid).title("Marker in Madrid"));
-        LatLng zaragoza = new LatLng(41.648823,-0.889085);*/
 
-                                     //Define list to get all latlng for the route
                                      List<LatLng> path = new ArrayList();
 
                                      LatLng fromCity = new LatLng(Double.parseDouble(departLati),
                                              Double.parseDouble(departLong));
-                                     MarkerOptions marker = new MarkerOptions().position(fromCity).title("Marker in " + departCity);
+                                     MarkerOptions marker = new MarkerOptions().position(fromCity).title(""+count);
+
                                      mMap.addMarker(marker);
 
-                                     LatLng toCity = new LatLng(Double.parseDouble(arrLati),
-                                             Double.parseDouble(arrLong));
-                                     mMap.addMarker(new MarkerOptions().position(toCity).title("Marker in " + arrCity));
 
                                      mMap.setOnMarkerClickListener(new OnMarkerClickListener(){
 
                                          @Override
                                          public boolean onMarkerClick(Marker marker) {
+
+
                                              Intent i = new Intent(getActivity(), TenantPropertyViewActivity.class);
-                                             i.putExtra("lati",marker.getPosition().latitude);
-                                             i.putExtra("long",marker.getPosition().longitude);
+                                             /*i.putExtra("lati",marker.getPosition().latitude);
+                                             i.putExtra("long",marker.getPosition().longitude);*/
+                                             i.putExtra("count",marker.getTitle());
+
+                                             Parcelable[] parcelist = new Parcelable[list.size()];
+                                             for(int k = 0 ; k < list.size(); k++){
+                                                 parcelist[k] = list.get(k);
+                                             }
+                                             i.putExtra("list",parcelist);
                                              startActivity(i);
                                              //Toast.makeText(getActivity(), ""+marker.getTitle()+marker.getPosition().latitude+marker.getPosition(), Toast.LENGTH_SHORT).show();
                                              return false;
                                          }
                                      } );
-                                     String origin = departLati + "," + departLong;
-                                     String destination = arrLati + "," + arrLong;
+
 
 
 
@@ -166,4 +170,7 @@ public class MapFragment extends Fragment implements
 
 
     }
+
+
+
 }
