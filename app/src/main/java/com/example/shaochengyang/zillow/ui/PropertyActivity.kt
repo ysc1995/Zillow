@@ -1,15 +1,12 @@
 package com.example.shaochengyang.zillow.ui
 
 import android.databinding.DataBindingUtil
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter
@@ -43,7 +40,7 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity{
 
         binding.viewmodel = viewModel
 
-        viewModel.initList(50)
+        viewModel.initList(3)
 
 
 

@@ -8,7 +8,6 @@ import io.reactivex.schedulers.Schedulers
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 class NetworkHelper : INetworkHelper{
 
@@ -19,20 +18,23 @@ class NetworkHelper : INetworkHelper{
     val apiService by lazy { ApiService.create() }
 
     override fun getPropertyList(i: Int, s: String, viewModel: ViewModel) {
-        disposable = apiService.getPropertyListInfo(i,s)
+        Log.d("MyTag","network")
+        disposable = apiService.getPropertyListInfo(i.toString(),s)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        {result -> //Log.d("thistag", result.property!![0].id)
+                        {result ->
+                            Log.d("MyTag", "hi")
+                            Log.d("MyTag", result.property.toString())
                          //viewModel.updateList(result.property!![0])
                             viewModel.mylist = mutableListOf()
                             for(item in result.property!!){
-                                viewModel.updateList(item)
+                                viewModel.updateList(item!!)
                             }
 
 
                         },
-                        { error -> Log.d("thistag",error.message)}
+                        { error -> Log.d("MyTag",error.message)}
                 )
     }
 

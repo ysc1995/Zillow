@@ -1,5 +1,6 @@
 package com.example.shaochengyang.zillow.data
 
+import android.util.Log
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.network.NetworkHelper
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
@@ -10,6 +11,7 @@ class DataManager:IDataManager {
         val NetworkHelper : NetworkHelper = NetworkHelper()
     }
     override fun getPropertyList(i: Int, s: String, viewModel: ViewModel) {
+        Log.d("MyTag","datamanager")
         NetworkHelper.getPropertyList(i,s, viewModel)
     }
 
