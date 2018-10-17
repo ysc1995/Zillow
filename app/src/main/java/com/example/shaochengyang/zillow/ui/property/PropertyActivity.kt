@@ -21,6 +21,7 @@ import com.example.shaochengyang.zillow.map.MapFragActivity
 import com.example.shaochengyang.zillow.map.TestActivity
 import com.example.shaochengyang.zillow.ui.FragAddProperty
 import com.example.shaochengyang.zillow.ui.TenantInfoActivity
+import com.example.shaochengyang.zillow.ui.chat.MainActivity
 
 class PropertyActivity : AppCompatActivity() , iPropertyActivity {
 
@@ -48,6 +49,9 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
         recycler_property.layoutManager = LinearLayoutManager(this)
 
         binding.viewmodel = viewModel
+
+        var id = 0
+
 
         viewModel.initList(3)
 
@@ -79,6 +83,10 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
             }
             R.id.info_icon->{
                 var intent = Intent(this@PropertyActivity, TenantInfoActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.more_icon->{
+                var intent = Intent(this@PropertyActivity, MainActivity::class.java)
                 startActivity(intent)
             }
         }

@@ -37,6 +37,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class SignInActivity extends AppCompatActivity implements
@@ -133,7 +134,11 @@ public class SignInActivity extends AppCompatActivity implements
                             Toast.makeText(SignInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(SignInActivity.this, PropertyActivity.class));
+                            FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+                            //Log.d("MyTag","email: "+ mFirebaseUser.getEmail() +" "+mFirebaseUser.getPhoneNumber() );
+                            Intent i = new Intent(SignInActivity.this, PropertyActivity.class);
+                            i.putExtra("email", mFirebaseUser.getEmail() );
+                            startActivity(i);
                             finish();
                         }
                     }
