@@ -47,21 +47,22 @@ class NetworkHelper : INetworkHelper{
         var pro_status = propertyItem.propertystatus!!
         var price = propertyItem.propertypurchaseprice!!
         var mortgage = propertyItem.propertymortageinfo!!
-        var userid = ""+50
+        var userid = ""+3
         var usertype = "landlord"
+        var lat = propertyItem.propertylatitude!!
+        var long = propertyItem.propertylongitude!!
 
         //retrofit2.Call<String> call //call = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype)
-        var call = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype)
+        var call = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype, lat, long)
         call . enqueue (object : retrofit2.Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                Log.d("MyTag", response.body()!!.toString())
                 viewModel.refreshList()
-
+                Log.d("MyTag","Success")
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Log.d("MyTag", t.toString())
                 viewModel.refreshList()
+                Log.d("MyTag","Fail")
             }
         })
 

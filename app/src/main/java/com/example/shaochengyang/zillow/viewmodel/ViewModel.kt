@@ -42,7 +42,7 @@ class ViewModel: BaseObservable() {
 
     fun addList(myProperty: PropertyItem){
         DataManager.addProperty(myProperty, this)
-        DataManager.getPropertyList(50,"landlord", this)
+        DataManager.getPropertyList(3,"landlord", this)
     }
 
     fun removeProperty(id: String){
@@ -53,7 +53,7 @@ class ViewModel: BaseObservable() {
 
     fun refreshList(){
         mylist = mutableListOf()
-        DataManager.getPropertyList(50,"landlord", this)
+        DataManager.getPropertyList(3,"landlord", this)
     }
 
 }

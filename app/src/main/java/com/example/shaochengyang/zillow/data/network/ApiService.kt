@@ -37,20 +37,32 @@ interface ApiService {
     fun getPropertyListInfo(@Query("userid") userid: String,
                             @Query("usertype") usertype: String): Observable<Property>
 
-    //http://rjtmobile.com/aamir/property-mgmt/pro_mgt_add_pro.php? address=fla1234&city=Noida&state=UP
-    // &country=India&pro_status=tenants&purchase_price=12000&mortage_info=no&userid=3&usertype=landlord
+    //rjtmobile.com/aamir/property-mgmt/pro_mgt_add_pro.php?%20address=fla1234&city=Noida&state=UP&country=India
+    // &pro_status=tenants&purchase_price=12000&mortage_info=no&userid=3&usertype=landlord&latitude=12.4565656&longitude=3.5656565
     @PUT("pro_mgt_add_pro.php")
     fun addProperty( @Query("address") address: String,
-                                 @Query("city") city: String,
-                                 @Query("state") state: String,
-                                @Query("country") country: String,
-                                @Query("pro_status") pro_status: String,
-                                @Query("purchase_price") purchase_price:String,
-                                @Query("mortage_info") mortage_info: String,
-                                @Query("userid") userid: String,
-                                @Query("usertype") usertype: String): Call<String>
+                     @Query("city") city: String,
+                     @Query("state") state: String,
+                     @Query("country") country: String,
+                     @Query("pro_status") pro_status: String,
+                     @Query("purchase_price") purchase_price:String,
+                     @Query("mortage_info") mortage_info: String,
+                     @Query("userid") userid: String,
+                     @Query("usertype") usertype: String,
+                     @Query("latitude")  latitude: String,
+                     @Query("longitude")  longitude: String): Call<String>
 
     @GET("remove-property.php")
     fun removeProperty(@Query("propertyid") propertyid: Int): Observable<String>
 
+    //http://rjtmobile.com/aamir/property-mgmt/pro_mgt_add_tenants.php?name=aam&email=aah@aah.com
+    // &address=complte address&mobile=9876543210&propertyid=1&landlordid=3
+    @GET("pro_mgt_add_tenants.php")
+    fun addTenant( @Query("name") name: String,
+                   @Query("email") email: String,
+                   @Query("address")   address: String,
+                   @Query("mobile")  mobile: String,
+                   @Query("propertyid")  propertyid: String,
+                   @Query("landlordid")  landlordid: String
+    ): Observable<String>
 }
