@@ -1,5 +1,8 @@
 package com.example.shaochengyang.zillow.ui.property
 
+
+
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +18,7 @@ import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.activity_property.*
 import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter.MyListener
 import com.example.shaochengyang.zillow.ui.FragAddProperty
+import com.example.shaochengyang.zillow.ui.TenantInfoActivity
 
 class PropertyActivity : AppCompatActivity() , iPropertyActivity {
 
@@ -29,6 +33,8 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
         val adapter = PropertyItemAdapter(object : MyListener{
             override fun onItemClicked(myProperty: PropertyItem) {
                 Log.d("MyTag", myProperty.id +" "+ myProperty.propertyaddress+" "+myProperty.propertycity)
+                var intent = Intent(this@PropertyActivity, TenantInfoActivity::class.java)
+                startActivity(intent)
             }
         }, object :MyListener{
             override fun onItemClicked(myProperty: PropertyItem) {
