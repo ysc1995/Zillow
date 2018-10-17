@@ -7,43 +7,42 @@
         <variable
             name="viewmodel"
             type="com.example.shaochengyang.zillow.viewmodel.ViewModel"
-        />
+            />
 
     </data>
 
 <android.support.constraint.ConstraintLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.property.PropertyActivity"
-    android:id="@+id/property_layout">
-
+    tools:context=".ui.TenantInfoActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_property"
+        android:id="@+id/recycler_tenant"
         android:layout_width="402dp"
         android:layout_height="559dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:idx_change="@{viewmodel.idx_change}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:mylist="@{viewmodel.mylist}" />
+        app:mylist="@{viewmodel.mylist_tenant}"
+        app:idx_change="@{viewmodel.idx_change}"
+        />
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_property"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="85dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

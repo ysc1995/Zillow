@@ -8,6 +8,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.example.shaochengyang.zillow.R
+import com.example.shaochengyang.zillow.ui.property.AddPropertyActivity
+import com.example.shaochengyang.zillow.ui.property.PropertyActivity
 
 class MoreActivity : AppCompatActivity() {
 
@@ -33,7 +35,7 @@ class MoreActivity : AppCompatActivity() {
                 startActivity(i_property)
             }
             R.id.yourhome_icon -> {
-                val i = Intent(this@MoreActivity,AddPropertyActivity::class.java)
+                val i = Intent(this@MoreActivity, AddPropertyActivity::class.java)
                 startActivity(i)
             }
 

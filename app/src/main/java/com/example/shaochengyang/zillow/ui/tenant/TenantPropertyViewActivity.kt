@@ -18,7 +18,7 @@ import com.anychart.enums.TooltipPositionMode
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.data.model.AllPropertyItem
 import com.example.shaochengyang.zillow.ui.MoreActivity
-import com.example.shaochengyang.zillow.ui.PropertyActivity
+import com.example.shaochengyang.zillow.ui.property.PropertyActivity
 import kotlinx.android.synthetic.main.activity_tenant_property_view.*
 import java.util.ArrayList
 

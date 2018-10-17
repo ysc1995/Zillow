@@ -42,66 +42,88 @@ class NetworkHelper : INetworkHelper {
     }
 
     override fun getPropertyList(i: Int, s: String, viewModel: ViewModel) {
-        disposable = apiService.getPropertyListInfo(i, s)
+        Log.d("MyTag","network")
+        disposable = apiService.getPropertyListInfo(i.toString(),s)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { result ->
-                            //Log.d("thistag", result.property!![0].id)
-                            //viewModel.updateList(result.property!![0])
+                        {result ->
+                            Log.d("MyTag", "hi")
+                            Log.d("MyTag", result.property.toString())
+                         //viewModel.updateList(result.property!![0])
                             viewModel.mylist = mutableListOf()
-                            for (item in result.property!!) {
-                                viewModel.updateList(item)
+                            for(item in result.property!!){
+                                viewModel.updateList(item!!)
                             }
 
 
                         },
-                        { error -> Log.d("thistag", error.message) }
+                        { error -> Log.d("MyTag",error.message)}
                 )
     }
 
     override fun addProperty(propertyItem: PropertyItem, viewModel: ViewModel) {
 
-        var add = propertyItem.propertyaddress!!
+        var add  = propertyItem.propertyaddress!!
         var city = propertyItem.propertycity!!
         var state = propertyItem.propertystate!!
         var country = propertyItem.propertycountry!!
         var pro_status = propertyItem.propertystatus!!
         var price = propertyItem.propertypurchaseprice!!
         var mortgage = propertyItem.propertymortageinfo!!
-        var userid = "" + 50
+        var userid = ""+3
         var usertype = "landlord"
+        var lat = propertyItem.propertylatitude!!
+        var long = propertyItem.propertylongitude!!
 
         //retrofit2.Call<String> call //call = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype)
-        var call = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype)
-        call.enqueue(object : retrofit2.Callback<String> {
+        var call = apiService.addProperty(add, city, state, country, pro_status, price, mortgage, userid, usertype, lat, long)
+        call . enqueue (object : retrofit2.Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                Log.d("MyTag", response.body()!!.toString())
                 viewModel.refreshList()
-
+                Log.d("MyTag","Success")
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Log.d("MyTag", t.toString())
                 viewModel.refreshList()
+                Log.d("MyTag","Fail")
             }
         })
 
     }
 
     override fun removeProperty(propertyid: String, viewModel: ViewModel) {
-        disposable = apiService.removeProperty(propertyid.toInt())
+        disposable = apiService. removeProperty(propertyid.toInt())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { result ->
-                            Log.d("thistag", "Success")
-                            viewModel.refreshList()
+                        {result -> Log.d("thistag", "Success")
+                          viewModel.refreshList()
                         },
-                        { error ->
-                            Log.d("thistag", error.message)
+                        { error -> Log.d("thistag",error.message)
                             viewModel.refreshList()
                         }
                 )
     }
+
+    override fun getTenantList(id: String, viewModel: ViewModel) {
+        Log.d("MyTag", "Get Tenant")
+        disposable = apiService.getTenantList(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        {result ->
+                            //Log.d("MyTag", "hi")
+                            //Log.d("MyTag", result.tenants.toString())
+                            viewModel.mylist_tenant = mutableListOf()
+                            for(tenantItem in result.tenants!!){
+                                //Log.d("MyTag", tenantItem.toString())
+                                viewModel.updateListTenant(tenantItem!!)
+                            }
+
+                        },
+                        { error -> Log.d("MyTag",error.message)}
+                )
+    }
+
 }

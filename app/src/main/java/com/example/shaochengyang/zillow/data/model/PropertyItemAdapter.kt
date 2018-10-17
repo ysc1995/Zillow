@@ -41,9 +41,13 @@ class PropertyItemAdapter(var listener_info: MyListener, var listener_remove: My
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun bind(myProperty: PropertyItem, listener_info: MyListener, listener_remove: MyListener){
-            itemView.textView_id.text = myProperty.id
-            itemView.textView_address.text = myProperty.propertyaddress
-            itemView.textView_city.text = myProperty.propertycity
+            itemView.textView_address.text = "Address: "+myProperty.propertyaddress
+            itemView.textView_city.text = "City: "+myProperty.propertycity
+            itemView.textView_state.text = "State: "+ myProperty.propertystate
+            itemView.textView_country.text = "Country: "+ myProperty.propertycountry
+            itemView.textView_pro_status.text = "Pro Status: "+myProperty.propertystatus
+            itemView.textView_price.text = "Price: "+myProperty.propertypurchaseprice
+            itemView.textView_mortgage.text = "Mortage Info: "+myProperty.propertymortageinfo
             itemView.button_info.setOnClickListener{listener_info.onItemClicked(myProperty)}
             itemView.button_remove.setOnClickListener{listener_remove.onItemClicked(myProperty)}
         }

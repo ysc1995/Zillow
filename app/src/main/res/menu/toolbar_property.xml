@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/yourhome_icon"
+        android:title="Your Home"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_home_black_24dp"
+        />
+
+
     <item android:id="@+id/add_icon"
         android:title="add"
         app:showAsAction="always"
@@ -13,5 +21,11 @@
         android:icon="@drawable/ic_done"
         >
     </item>
+
+    <item android:id="@+id/more_icon"
+        android:title="More"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_more_horiz_black_24dp"
+        />
 
 </menu>

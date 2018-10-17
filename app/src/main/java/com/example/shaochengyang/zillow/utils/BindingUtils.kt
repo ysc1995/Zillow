@@ -20,3 +20,4 @@ fun <T> setDataChanged(recyclerView: RecyclerView, positions: Int) {
 
     }
 }
+
