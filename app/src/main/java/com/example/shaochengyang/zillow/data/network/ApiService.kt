@@ -1,6 +1,7 @@
 package com.example.shaochengyang.zillow.data.network
 
 import com.example.shaochengyang.zillow.data.model.Property
+import com.example.shaochengyang.zillow.data.model.TenantInfo
 import io.reactivex.Observable
 import retrofit2.Call
 
@@ -65,4 +66,11 @@ interface ApiService {
                    @Query("propertyid")  propertyid: String,
                    @Query("landlordid")  landlordid: String
     ): Observable<String>
+
+    //http://rjtmobile.com/aamir/property-mgmt/pro_mgt_tenent_details.php?landlordid=3
+    @GET("pro_mgt_tenent_details.php")
+    fun getTenantList( @Query("landlordid")  landlordid: String): Observable<TenantInfo>
+
+
+
 }

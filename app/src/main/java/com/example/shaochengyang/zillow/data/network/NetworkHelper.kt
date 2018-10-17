@@ -81,4 +81,25 @@ class NetworkHelper : INetworkHelper{
                         }
                 )
     }
+
+    override fun getTenantList(id: String, viewModel: ViewModel) {
+        Log.d("MyTag", "Get Tenant")
+        disposable = apiService.getTenantList(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        {result ->
+                            //Log.d("MyTag", "hi")
+                            //Log.d("MyTag", result.tenants.toString())
+                            viewModel.mylist_tenant = mutableListOf()
+                            for(tenantItem in result.tenants!!){
+                                //Log.d("MyTag", tenantItem.toString())
+                                viewModel.updateListTenant(tenantItem!!)
+                            }
+
+                        },
+                        { error -> Log.d("MyTag",error.message)}
+                )
+    }
+
 }

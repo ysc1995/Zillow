@@ -6,7 +6,6 @@ import com.example.shaochengyang.zillow.data.network.NetworkHelper
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 class DataManager:IDataManager {
 
-
     companion object {
         val NetworkHelper : NetworkHelper = NetworkHelper()
     }
@@ -22,5 +21,7 @@ class DataManager:IDataManager {
     override fun removeProperty(propertyid: String, viewModel: ViewModel) {
         NetworkHelper.removeProperty(propertyid, viewModel)
     }
-
+    override fun getTenantList(id: String, viewModel: ViewModel) {
+        NetworkHelper.getTenantList(id, viewModel)
+    }
 }
