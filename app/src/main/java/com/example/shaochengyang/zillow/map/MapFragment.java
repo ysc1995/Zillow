@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shaochengyang.zillow.R;
+import com.example.shaochengyang.zillow.data.model.AllProperty;
 import com.example.shaochengyang.zillow.data.model.AllPropertyItem;
 import com.example.shaochengyang.zillow.data.model.MapPassItem;
+import com.example.shaochengyang.zillow.data.model.CustomObj;
 import com.example.shaochengyang.zillow.ui.tenant.TenantPropertyViewActivity;
-import com.example.shaochengyang.zillow.viewmodel.ViewModel;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
@@ -24,8 +25,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.GeoApiContext;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +45,9 @@ public class MapFragment extends Fragment implements
     int count;
     List<AllPropertyItem> list;
 
+    private Marker marker;
+    private AllPropertyItem customObj;
+
     /*IDataManager iDataManager;*/
 
 
@@ -62,16 +64,18 @@ public class MapFragment extends Fragment implements
 
         MapFragActivity mapFragActivity = (MapFragActivity) getActivity();
         list = mapFragActivity.getList();
-        List<MapPassItem> passList = new ArrayList<>();
+        //List<MapPassItem> passList = new ArrayList<>();
+        List<AllPropertyItem> passList = new ArrayList<>();
         for(int i = 0 ; i < list.size(); i++){
             if(!list.get(i).getPropertylatitude().equals("")&&!list.get(i).getPropertylongitude().equals("")) {
                 price = list.get(i).getPropertypurchaseprice();
                 String lati = list.get(i).getPropertylatitude();
                 String longi = list.get(i).getPropertylongitude();
 
-                MapPassItem mapPassItem = new MapPassItem(lati,longi,i);
-
-                passList.add(mapPassItem);
+                MapPassItem mapPassItem = new MapPassItem(lati,longi,i,price);
+                AllPropertyItem allPropertyItem = list.get(i);
+                //passList.add(mapPassItem);
+                passList.add(allPropertyItem);
                 //setLocation(list.get(i).getPropertylatitude(), list.get(i).getPropertylongitude(),price,i);
             }
 
@@ -91,7 +95,7 @@ public class MapFragment extends Fragment implements
         return rootView;
     }
 
-    private void setLocation(final List<MapPassItem> passList) {
+    private void setLocation(final List<AllPropertyItem> passList) {
 
 
 
@@ -101,15 +105,22 @@ public class MapFragment extends Fragment implements
                                  public void onMapReady(GoogleMap googleMap) {
                                      mMap = googleMap;
                                      for(int i = 0 ; i < passList.size() ; i++){
-                                         departLati=passList.get(i).getLati();
-                                         departLong = passList.get(i).getLongi();
-                                         count = passList.get(i).getCount();
+                                         departLati=passList.get(i).getPropertylatitude();
+                                         departLong = passList.get(i).getPropertylongitude();
+                                         /*count = passList.get(i).getCount();*/
+                                         price = passList.get(i).getPropertypurchaseprice();
 
                                          LatLng fromCity = new LatLng(Double.parseDouble(departLati),
                                                  Double.parseDouble(departLong));
-                                         MarkerOptions marker = new MarkerOptions().position(fromCity).title(""+count);
+                                         MarkerOptions markerOptions = new MarkerOptions().position(fromCity).title("$"+price+"/mo").snippet(passList.get(i).getPropertyaddress() +", "+passList.get(i).getPropertycity()+", "+passList.get(i).getPropertystate()+", "+passList.get(i).getPropertycountry());
 
-                                         mMap.addMarker(marker);
+                                         marker = mMap.addMarker(markerOptions);
+                                         if(!marker.isInfoWindowShown()){
+                                             marker.showInfoWindow();
+                                         }
+                                         customObj = passList.get(i);
+                                         //customObj = new CustomObj(passList.get(i).getCount());
+                                         marker.setTag(customObj);
                                      }
 
 
@@ -125,13 +136,28 @@ public class MapFragment extends Fragment implements
                                              Intent i = new Intent(getActivity(), TenantPropertyViewActivity.class);
                                              /*i.putExtra("lati",marker.getPosition().latitude);
                                              i.putExtra("long",marker.getPosition().longitude);*/
-                                             i.putExtra("count",marker.getTitle());
 
-                                             Parcelable[] parcelist = new Parcelable[list.size()];
+                                             AllPropertyItem myCustomObj = (AllPropertyItem) marker.getTag();
+
+                                             //i.putExtra("count",""+myCustomObj.getCount());
+
+                                             /*Parcelable[] parcelist = new Parcelable[list.size()];
                                              for(int k = 0 ; k < list.size(); k++){
                                                  parcelist[k] = list.get(k);
-                                             }
-                                             i.putExtra("list",parcelist);
+                                             }*/
+
+                                             //i.putExtra("list",parcelist);
+                                             i.putExtra("price",myCustomObj.getPropertypurchaseprice());
+                                             i.putExtra("address",myCustomObj.getPropertyaddress());
+                                             i.putExtra("city",myCustomObj.getPropertycity());
+                                             i.putExtra("state",myCustomObj.getPropertystate());
+                                             i.putExtra("country",myCustomObj.getPropertycountry());
+                                             i.putExtra("userid",myCustomObj.getPropertyuserid());
+                                             i.putExtra("lati",myCustomObj.getPropertylatitude());
+                                             i.putExtra("longi",myCustomObj.getPropertylongitude());
+                                             i.putExtra("mortgage",myCustomObj.getPropertymortageinfo());
+                                             i.putExtra("id",myCustomObj.getId());
+
                                              startActivity(i);
                                              //Toast.makeText(getActivity(), ""+marker.getTitle()+marker.getPosition().latitude+marker.getPosition(), Toast.LENGTH_SHORT).show();
                                              return false;

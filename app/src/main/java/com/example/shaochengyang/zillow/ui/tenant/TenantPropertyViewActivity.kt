@@ -37,35 +37,37 @@ class TenantPropertyViewActivity : AppCompatActivity() {
 
         showPriceChart()
 
-        val list = intent.getParcelableArrayExtra("list")
+        /*val list = intent.getParcelableArrayExtra("list")
         val count = intent.getStringExtra("count")
         val propertyItemList = ArrayList<AllPropertyItem>()
         for (i in list.indices) {
 
             propertyItemList.add(list[i] as AllPropertyItem)
-        }
+        }*/
 
 
-        var lati = propertyItemList[Integer.parseInt(count)].propertylatitude
-        var long = propertyItemList[Integer.parseInt(count)].propertylongitude
-        var item = propertyItemList[Integer.parseInt(count)]
-        var price = item.propertypurchaseprice
-        var address = item.propertyaddress
-        var city = item.propertycity
-        var state = item.propertystate
-        var userid = item.propertyuserid
-        var mortage = item.propertymortageinfo
+        var price = intent.getStringExtra("price")
+        var address = intent.getStringExtra("address")
+        var city = intent.getStringExtra("city")
+        var state = intent.getStringExtra("state")
+        var country = intent.getStringExtra("country")
+        var userid = intent.getStringExtra("userid")
+        var lati = intent.getStringExtra("lati")
+        var longi = intent.getStringExtra("longi")
+        var mortgage = intent.getStringExtra("mortgage")
+        var id = intent.getStringExtra("id")
 
 
-        tv_address.text = propertyItemList[Integer.parseInt(count)].propertyaddress + ","
-        tv_address2.text = propertyItemList[Integer.parseInt(count)].propertycity + "," + item.propertystate + "," + item.propertycountry
-        tv_payment.text = "Est.Refi.Payment: $" + item.propertypurchaseprice + "/mo"
-        tv_mortage.text = mortage
+
+        tv_address.text = address + ","
+        tv_address2.text = city + ", " + state + ", " + country
+        tv_payment.text = "Est.Refi.Payment: $" + price + "/mo"
+        tv_mortage.text = mortgage
 
         Img_map_marker.setOnClickListener {
             val i = Intent(this@TenantPropertyViewActivity, PropertyMapActivity::class.java)
             i.putExtra("lati", lati)
-            i.putExtra("long", long)
+            i.putExtra("long", longi)
             i.putExtra("price", price)
             startActivity(i)
         }

@@ -1,9 +1,9 @@
 package com.example.shaochengyang.zillow.data.model;
 
-public class MarkerObj {
+public class CustomObj {
     int count;
 
-    public MarkerObj(int count) {
+    public CustomObj(int count) {
         this.count = count;
     }
 
