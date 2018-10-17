@@ -1,5 +1,6 @@
 package com.example.shaochengyang.zillow.data.network
 
+import com.example.shaochengyang.zillow.data.model.AllProperty
 import com.example.shaochengyang.zillow.data.model.Property
 
 import io.reactivex.Observable
@@ -28,6 +29,11 @@ interface ApiService {
             return retrofit.create(ApiService::class.java)
         }
     }
+
+    //http://rjtmobile.com/aamir/property-mgmt/pro_mgt_property_all.php
+
+    @GET("pro_mgt_property_all.php")
+    fun getAllPropertyInfo():Observable<AllProperty>
 
     @GET("property.php")
     fun getPropertyListInfo(@Query("userid") userid: Int,

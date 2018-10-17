@@ -1,9 +1,11 @@
 package com.example.shaochengyang.zillow.data
 
+import android.content.Context
+
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.network.NetworkHelper
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
-class DataManager:IDataManager {
+class DataManager :IDataManager {
 
 
     companion object {
@@ -20,5 +22,11 @@ class DataManager:IDataManager {
     override fun removeProperty(propertyid: String, viewModel: ViewModel) {
         NetworkHelper.removeProperty(propertyid, viewModel)
     }
+
+    override fun getAllPropertyInfo(listener : IDataManager.onAllPropertyInfoListener) {
+        NetworkHelper.getAllPropertyInfo(listener)
+    }
+
+
 
 }
