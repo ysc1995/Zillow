@@ -54,12 +54,17 @@
             android:value="bccaf55c82db0117f068ef7f5d1e885223b3045c" />
 
         <activity android:name=".map.TestActivity">
+
+        </activity>
+
+        <activity android:name=".ui.chat.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

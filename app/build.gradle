@@ -19,6 +19,7 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -75,4 +76,10 @@ dependencies {
         transitive = true;
     }
 
+    //firebase
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
+
+    // Google
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
 }
