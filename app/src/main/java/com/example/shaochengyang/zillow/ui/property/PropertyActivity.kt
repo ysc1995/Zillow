@@ -17,6 +17,8 @@ import com.example.shaochengyang.zillow.databinding.ActivityPropertyBinding
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.activity_property.*
 import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter.MyListener
+import com.example.shaochengyang.zillow.map.MapFragActivity
+import com.example.shaochengyang.zillow.map.TestActivity
 import com.example.shaochengyang.zillow.ui.FragAddProperty
 import com.example.shaochengyang.zillow.ui.TenantInfoActivity
 
@@ -74,6 +76,10 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
                         .beginTransaction()
                         .remove(fragaddproperty)
                         .commit()
+            }
+            R.id.info_icon->{
+                var intent = Intent(this@PropertyActivity, TenantInfoActivity::class.java)
+                startActivity(intent)
             }
         }
 
