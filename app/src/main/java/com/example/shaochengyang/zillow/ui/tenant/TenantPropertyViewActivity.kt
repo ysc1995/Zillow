@@ -17,7 +17,7 @@ import com.anychart.enums.Position
 import com.anychart.enums.TooltipPositionMode
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.ui.MoreActivity
-import com.example.shaochengyang.zillow.ui.property.PropertyActivity
+import com.example.shaochengyang.zillow.ui.PropertyActivity
 import java.util.ArrayList
 
 class TenantPropertyViewActivity : AppCompatActivity() {
@@ -29,6 +29,16 @@ class TenantPropertyViewActivity : AppCompatActivity() {
         setSupportActionBar(findViewById<View>(R.id.toolbar_map) as Toolbar)
 
         showPriceChart()
+
+        var lati = intent.getStringExtra("lati")
+        var long = intent.getStringExtra("long")
+
+        Img_map_marker.setOnClickListener {
+            val i = Intent(this@TenantPropertyViewActivity, PropertyMapActivity::class.java)
+            i.putExtra("lati",lati)
+            i.putExtra("long",long)
+            startActivity(i)
+        }
     }
 
     fun showPriceChart(){

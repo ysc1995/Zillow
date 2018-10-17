@@ -2,55 +2,42 @@ package com.example.shaochengyang.zillow.data.model
 
 import com.google.gson.annotations.SerializedName
 
-class PropertyItem {
 
+data class PropertyItem(
 
+	@field:SerializedName("propertycountry")
+	val propertycountry: String? = null,
 
-    @SerializedName("propertycountry")
-    var propertycountry: String? = null
+	@field:SerializedName("propertypurchaseprice")
+	val propertypurchaseprice: String? = null,
 
-    @SerializedName("propertypurchaseprice")
-    var propertypurchaseprice: String? = null
+	@field:SerializedName("propertyuserid")
+	val propertyuserid: String? = null,
 
-    @SerializedName("propertystatus")
-    var propertystatus: String? = null
+	@field:SerializedName("propertystatus")
+	val propertystatus: String? = null,
 
-    @SerializedName("propertymortageinfo")
-    var propertymortageinfo: String? = null
+	@field:SerializedName("propertyusertype")
+	val propertyusertype: String? = null,
 
-    @SerializedName("id")
-    var id: String? = null
+	@field:SerializedName("propertymortageinfo")
+	val propertymortageinfo: String? = null,
 
-    @SerializedName("propertystate")
-    var propertystate: String? = null
+	@field:SerializedName("id")
+	val id: String? = null,
 
-    @SerializedName("propertyaddress")
-    var propertyaddress: String? = null
+	@field:SerializedName("propertystate")
+	val propertystate: String? = null,
 
-    @SerializedName("propertycity")
-    var propertycity: String? = null
+	@field:SerializedName("propertylatitude")
+	val propertylatitude: String? = null,
 
-    constructor(propertyaddress: String?, propertycity: String?, propertystate: String?, propertycountry: String?, propertystatus: String?, propertypurchaseprice: String?, propertymortageinfo: String?) {
-        this.propertycountry = propertycountry
-        this.propertypurchaseprice = propertypurchaseprice
-        this.propertystatus = propertystatus
-        this.propertymortageinfo = propertymortageinfo
-        this.propertystate = propertystate
-        this.propertyaddress = propertyaddress
-        this.propertycity = propertycity
-    }
+	@field:SerializedName("propertyaddress")
+	val propertyaddress: String? = null,
 
+	@field:SerializedName("propertycity")
+	val propertycity: String? = null,
 
-    override fun toString(): String {
-        return "PropertyItem{" +
-                "propertycountry = '" + propertycountry + '\''.toString() +
-                ",propertypurchaseprice = '" + propertypurchaseprice + '\''.toString() +
-                ",propertystatus = '" + propertystatus + '\''.toString() +
-                ",propertymortageinfo = '" + propertymortageinfo + '\''.toString() +
-                ",id = '" + id + '\''.toString() +
-                ",propertystate = '" + propertystate + '\''.toString() +
-                ",propertyaddress = '" + propertyaddress + '\''.toString() +
-                ",propertycity = '" + propertycity + '\''.toString() +
-                "}"
-    }
-}
+	@field:SerializedName("propertylongitude")
+	val propertylongitude: String? = null
+)

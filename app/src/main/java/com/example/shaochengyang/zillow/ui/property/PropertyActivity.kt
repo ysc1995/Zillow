@@ -40,7 +40,7 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
 
         binding.viewmodel = viewModel
 
-        viewModel.initList(50)
+        viewModel.initList(3)
 
 
 

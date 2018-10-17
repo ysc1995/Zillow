@@ -6,8 +6,6 @@ import android.util.Log
 import com.example.shaochengyang.zillow.BR
 import com.example.shaochengyang.zillow.data.DataManager
 import com.example.shaochengyang.zillow.data.IDataManager
-
-
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 
 class ViewModel: BaseObservable() {
@@ -29,6 +27,7 @@ class ViewModel: BaseObservable() {
     val DataManager: IDataManager = DataManager()
 
     fun initList(id: Int){
+         Log.d("MyTag","initlist")
           DataManager.getPropertyList(id,"landlord", this)
     }
 

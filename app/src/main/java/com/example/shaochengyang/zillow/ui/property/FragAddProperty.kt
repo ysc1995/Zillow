@@ -1,4 +1,4 @@
-package com.example.shaochengyang.zillow.ui.property
+package com.example.shaochengyang.zillow.ui
 
 import android.app.Fragment
 import android.os.Bundle
@@ -22,11 +22,12 @@ class FragAddProperty: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup,
                               savedInstanceState: Bundle?): View {
+        var propertyItem = PropertyItem("add","sh","sh", "China", "120",  "status",  "no")
 
         var v = inflater.inflate(R.layout.frag_add_property, container, false)
         v.button_add.setOnClickListener {
-            var propertyItem = PropertyItem(editText_address.text.toString(),editText_city.text.toString(),editText_state.text.toString(),
-                         editText_country.text.toString(), editText_pro.text.toString(),  editText_price.text.toString(),  editText_mortgage.text.toString())
+            var propertyItem = PropertyItem("add","sh","sh",
+                         "China", "120",  "status",  "no")
             (activity as PropertyActivity).addProperty(propertyItem)
         }
 
