@@ -33,12 +33,6 @@ class ViewModel: BaseObservable() {
             notifyPropertyChanged(BR.idx_change)
         }
 
-    @get: Bindable
-    var idx_change_tenant: Int = 0
-    set(value) {
-        field = value
-        notifyPropertyChanged(BR.idx_change_tenant)
-    }
 
     val DataManager: IDataManager = DataManager()
 
@@ -52,7 +46,6 @@ class ViewModel: BaseObservable() {
         DataManager.getTenantList(id,  this)
         Log.d("MyTag","initlist2")
 
-        idx_change_tenant = 0
     }
 
     fun updateList(myProperty: PropertyItem){
@@ -65,7 +58,7 @@ class ViewModel: BaseObservable() {
     fun updateListTenant(tenantsItem: TenantsItem){
         Log.d("MyTag", tenantsItem.id+ " "+tenantsItem.tenantaddress)
         mylist_tenant.add(tenantsItem)
-        idx_change_tenant = 0
+        idx_change = 0
 //        DataManager.addProperty(myProperty, this)
 
     }

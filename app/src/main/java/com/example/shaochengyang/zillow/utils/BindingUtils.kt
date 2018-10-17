@@ -21,17 +21,3 @@ fun <T> setDataChanged(recyclerView: RecyclerView, positions: Int) {
     }
 }
 
-@BindingAdapter("mylist_tenant")
-fun <T> setRecyclerViewPropertiesTenant(recyclerView: RecyclerView, items: List<T>) {
-    if (recyclerView.adapter is BindableAdapter<*>) {
-        (recyclerView.adapter as BindableAdapter<T>).updateList(items)
-    }
-}
-
-@BindingAdapter("idx_change_tenant")
-fun <T> setDataChangedTenant(recyclerView: RecyclerView, positions: Int) {
-    if (recyclerView.adapter is BindableAdapter<*>) {
-        (recyclerView.adapter as BindableAdapter<T>).idxChanged(positions)
-
-    }
-}
