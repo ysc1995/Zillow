@@ -5,22 +5,18 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.ui.chat.SignInActivity
+import kotlinx.android.synthetic.main.activity_tech.*
 
-class SplashActivity : AppCompatActivity() {
+class TechActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(R.layout.activity_tech)
 
-        var t1: Thread = Thread() {
-            Thread.sleep(2500)
-
-            var i: Intent = Intent(this@SplashActivity, TechActivity::class.java)
-            startActivity(i)
-            finish()
+        image_cog.setOnClickListener {
+            var intent = Intent(this@TechActivity, SignInActivity::class.java)
+            startActivity(intent)
         }
-
-        t1.start()
 
     }
 }

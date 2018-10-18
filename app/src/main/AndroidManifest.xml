@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.property.PropertyActivity"></activity>
+        <activity android:name=".ui.property.PropertyActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,11 +43,8 @@
             android:name="io.fabric.ApiKey"
             android:value="bccaf55c82db0117f068ef7f5d1e885223b3045c" />
 
-
-        <activity android:name=".map.TestActivity"></activity>
-        <activity android:name=".ui.chat.SignInActivity">
-
-        </activity>
+        <activity android:name=".map.TestActivity" />
+        <activity android:name=".ui.chat.SignInActivity"></activity>
         <activity android:name=".ui.chat.ChatActivity" />
         <activity android:name=".ui.chat.PreChatLandlordActivity" />
         <activity android:name=".ui.chat.PreChatTenantActivity" />
@@ -58,11 +55,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-
-        <activity android:name=".ui.tenant.MarketActivity"></activity>
+        <activity android:name=".ui.tenant.MarketActivity" />
+        <activity android:name=".ui.TechActivity"></activity>
     </application>
 
 </manifest>

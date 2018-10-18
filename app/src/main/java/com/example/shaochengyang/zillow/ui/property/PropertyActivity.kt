@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.example.shaochengyang.zillow.BuildConfig
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.data.model.PropertyItem
@@ -108,5 +109,6 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
     override fun addProperty(propertyItem: PropertyItem) {
         //Log.d("MyTag","hi")
         viewModel.addList(propertyItem)
+        Toast.makeText(this, "Property Added" , Toast.LENGTH_SHORT).show()
     }
 }

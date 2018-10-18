@@ -201,6 +201,7 @@ public class ChatActivity extends AppCompatActivity
 
         if(!topic.equals("andy_andrew")){
             topic = MESSAGES_CHILD;
+            Toast.makeText(this, "Not a legal tenant. Redirected to group chat", Toast.LENGTH_LONG).show();
         }
 
         //DatabaseReference messagesRef = mFirebaseDatabaseReference.child(MESSAGES_CHILD);

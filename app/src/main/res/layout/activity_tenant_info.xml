@@ -15,7 +15,9 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TenantInfoActivity">
+    tools:context=".ui.TenantInfoActivity"
+    android:background="@color/colorPropertyBackground"
+    >
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_tenant"
@@ -41,7 +43,9 @@
         android:text="My Tenants"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
     <ImageView
         android:layout_width="105dp"
