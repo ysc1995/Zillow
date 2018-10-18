@@ -2,6 +2,7 @@ package com.example.shaochengyang.zillow.ui
 
 import android.content.ComponentName
 import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
@@ -32,6 +33,11 @@ class MoreActivity : AppCompatActivity() {
             i.action = Intent.ACTION_MAIN
             i.addCategory(Intent.CATEGORY_LAUNCHER)
             i.component = ComponentName("com.android.calculator2", "com.android.calculator2.Calculator")
+            startActivity(i)
+        }
+
+        tv_contact.setOnClickListener {
+            val i = Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"4044448858"))
             startActivity(i)
         }
     }

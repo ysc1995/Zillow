@@ -111,12 +111,12 @@ public class PropertyMapFragment extends Fragment implements
 
                                      LatLng fromCity = new LatLng(Double.parseDouble(departLati),
                                              Double.parseDouble(departLong));
-                                     mMap.addMarker(new MarkerOptions().position(fromCity).title(price + "$"));
+                                     mMap.addMarker(new MarkerOptions().position(fromCity).title("Est.Payment: $"+price + "/mo"));
 
 
                                      mMap.getUiSettings().setZoomControlsEnabled(true);
 
-                                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromCity, 9));
+                                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromCity, 15));
                                  }
                              }
         );
