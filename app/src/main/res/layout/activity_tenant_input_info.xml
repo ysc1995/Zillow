@@ -6,22 +6,35 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.tenant.TenantInputInfoActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RENTAL REQUEST"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        />
 
 
     <android.support.v7.widget.CardView
         android:layout_width="350dp"
-        android:layout_height="600dp">
+        android:layout_height="220dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="28dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
 
             <TextView
                 style="@style/sectionHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:text="Rent Confirmation"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -31,11 +44,131 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Property Address:"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_address_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1942 Wessel Ct"
+                android:layout_marginLeft="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Property Mortgage Info:"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_mortage_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NA"
+                android:layout_marginLeft="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Property Rental Price:"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_price_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$1300/mo"
+                android:layout_marginLeft="5dp"
+                />
 
 
         </LinearLayout>
 
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="340dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="28dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+
+            >
+
+            <TextView
+                style="@style/sectionHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gather Information"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:hint="Type Your Name"
+                />
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:hint="Type Your Email Address"
+                />
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:hint="Type Your Address"
+                />
+            <EditText
+                android:id="@+id/et_mobile"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:hint="Type Your Phone Number"
+                />
+
+            <Button
+                android:id="@+id/bt_submitRent"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="SUBMIT REQUEST"
+                android:background="#224bff"
+                android:textColor="#ffff"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="25dp"
+
+
+                />
+
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
