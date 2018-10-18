@@ -40,6 +40,22 @@ android {
     dataBinding {
         enabled = true
     }
+    flavorDimensions "myversion"
+    productFlavors {
+        tenant {
+            dimension "myversion"
+            applicationId "com.example.shaochengyang.zillow"
+            versionName "tenant"
+        }
+
+        landlord {
+            dimension "myversion"
+            applicationId "com.example.shaochengyang.zillow"
+            versionName "landlord"
+        }
+
+    }
+
 }
 
 dependencies {
