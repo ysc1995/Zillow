@@ -15,6 +15,7 @@ import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter
 import com.example.shaochengyang.zillow.data.model.TenantItemAdapter
 import com.example.shaochengyang.zillow.data.model.TenantsItem
 import com.example.shaochengyang.zillow.databinding.ActivityTenantInfoBinding
+import com.example.shaochengyang.zillow.ui.chat.ChatActivity
 import com.example.shaochengyang.zillow.ui.chat.PreChatLandlordActivity
 import com.example.shaochengyang.zillow.ui.chat.PreChatTenantActivity
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
@@ -39,7 +40,9 @@ class TenantInfoActivity : AppCompatActivity() {
 
         val adapter = TenantItemAdapter(object : TenantItemAdapter.MyListener {
             override fun onItemClicked(tenantsItem: TenantsItem) {
-
+                var intent = Intent(this@TenantInfoActivity, ChatActivity::class.java)
+                intent.putExtra("tenant", tenantsItem.tenantname.toString())
+                startActivity(intent)
             }
         }, object : TenantItemAdapter.MyListener {
             override fun onItemClicked(tenantsItem: TenantsItem) {

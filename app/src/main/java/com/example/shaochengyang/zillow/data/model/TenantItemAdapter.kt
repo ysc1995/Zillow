@@ -47,6 +47,7 @@ class TenantItemAdapter(var listener_info: MyListener, var listener_remove: MyLi
                itemView.textView_tenant_address.text = "Address: "+tenantsItem.tenantaddress
                itemView.textView_tenant_email.text = "email: "+tenantsItem.tenantemail
                itemView.textView_tenant_mobile.text = "mobile: "+tenantsItem.tenantmobile
+               itemView.setOnClickListener { listener_info.onItemClicked(tenantsItem) }
         }
 
     }

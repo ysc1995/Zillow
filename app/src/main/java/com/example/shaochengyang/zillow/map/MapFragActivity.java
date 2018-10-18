@@ -55,10 +55,7 @@ public class MapFragActivity extends AppCompatActivity {
                 Intent i_property = new Intent(MapFragActivity.this, TestActivity.class);
                 startActivity(i_property);
                 break;
-           /* case R.id.yourhome_icon:
-                Intent i_addProperty = new Intent(MapFragActivity.this,AddPropertyActivity.class);
-                startActivity(i_addProperty);
-                break;*/
+
             case R.id.more_icon:
                 Intent i = new Intent(MapFragActivity.this,MoreActivity.class);
                 startActivity(i);

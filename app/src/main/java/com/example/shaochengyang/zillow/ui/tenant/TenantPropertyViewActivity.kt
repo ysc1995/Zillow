@@ -74,7 +74,8 @@ class TenantPropertyViewActivity : AppCompatActivity() {
         }
 
         button_contactOwner.setOnClickListener{
-            val i = Intent(this@TenantPropertyViewActivity, PreChatTenantActivity::class.java)
+            val i = Intent(this@TenantPropertyViewActivity, ChatActivity::class.java)
+            i.putExtra("landlord","andy")
             startActivity(i)
         }
 
