@@ -9,5 +9,6 @@
     <color name="colorChatBackgroundother">#b4f290</color>
     <color name="colorSignInBackGround">#3b57ec</color>
     <color name="colorCardBackGround">#eaffb9</color>
+    <color name="colorChatOther">#afed9c</color>
 
 </resources>
