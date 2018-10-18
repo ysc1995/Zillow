@@ -7,9 +7,11 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.example.shaochengyang.zillow.BuildConfig
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter
@@ -17,11 +19,11 @@ import com.example.shaochengyang.zillow.databinding.ActivityPropertyBinding
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.activity_property.*
 import com.example.shaochengyang.zillow.data.model.PropertyItemAdapter.MyListener
-import com.example.shaochengyang.zillow.map.MapFragActivity
-import com.example.shaochengyang.zillow.map.TestActivity
 import com.example.shaochengyang.zillow.ui.FragAddProperty
 import com.example.shaochengyang.zillow.ui.TenantInfoActivity
-import com.example.shaochengyang.zillow.ui.chat.MainActivity
+import com.example.shaochengyang.zillow.ui.chat.ChatActivity
+import com.example.shaochengyang.zillow.ui.chat.PreChatLandlordActivity
+import com.example.shaochengyang.zillow.ui.chat.PreChatTenantActivity
 
 class PropertyActivity : AppCompatActivity() , iPropertyActivity {
 
@@ -46,7 +48,7 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
             }
         })
         recycler_property.adapter = adapter
-        recycler_property.layoutManager = LinearLayoutManager(this)
+        recycler_property.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
 
         binding.viewmodel = viewModel
 
@@ -55,7 +57,7 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
 
         viewModel.initList(3)
 
-
+        //Log.d("MyFlavor", BuildConfig.FLAVOR)
 
     }
 
@@ -86,8 +88,15 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
                 startActivity(intent)
             }
             R.id.more_icon->{
-                var intent = Intent(this@PropertyActivity, MainActivity::class.java)
-                startActivity(intent)
+                Log.d("MyFlavor",BuildConfig.FLAVOR)
+                if(BuildConfig.FLAVOR.equals("landlord")) {
+                    var intent = Intent(this@PropertyActivity, PreChatLandlordActivity::class.java)
+                    startActivity(intent)
+                }
+                else{
+                    var intent = Intent(this@PropertyActivity, PreChatTenantActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
 

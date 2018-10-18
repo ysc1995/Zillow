@@ -43,6 +43,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.shaochengyang.zillow.BuildConfig;
 import com.example.shaochengyang.zillow.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -69,7 +70,7 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity
+public class ChatActivity extends AppCompatActivity
         implements GoogleApiClient.OnConnectionFailedListener {
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder {
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "ChatActivity";
     public static final String MESSAGES_CHILD = "messages";
     private static final int REQUEST_INVITE = 1;
     private static final int REQUEST_IMAGE = 2;
@@ -115,10 +116,11 @@ public class MainActivity extends AppCompatActivity
     private FirebaseRecyclerAdapter<FriendlyMessage, MessageViewHolder>
             mFirebaseAdapter;
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
+    String topic = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_chat);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Set default username is anonymous.
         mUsername = ANONYMOUS;
@@ -183,8 +185,20 @@ public class MainActivity extends AppCompatActivity
             }
         };
 
-        DatabaseReference messagesRef = mFirebaseDatabaseReference.child(MESSAGES_CHILD);
-        //DatabaseReference messagesRef = mFirebaseDatabaseReference.child("andychat");
+        if(BuildConfig.FLAVOR.equals("landlord")) {
+            String tenant_nm = getIntent().getStringExtra("tenant");
+            Log.d("MyTag", tenant_nm);
+            topic = "andy_"+tenant_nm;
+        }
+        else{
+            String landlord_nm = getIntent().getStringExtra("landlord");
+            topic = landlord_nm+"_andrew";
+        }
+
+        Log.d("MyTag", topic);
+
+        //DatabaseReference messagesRef = mFirebaseDatabaseReference.child(MESSAGES_CHILD);
+        DatabaseReference messagesRef = mFirebaseDatabaseReference.child(topic);
         FirebaseRecyclerOptions<FriendlyMessage> options =
                 new FirebaseRecyclerOptions.Builder<FriendlyMessage>()
                         .setQuery(messagesRef, parser)
@@ -239,10 +253,10 @@ public class MainActivity extends AppCompatActivity
                 viewHolder.messengerTextView.setText(friendlyMessage.getName());
 
                 if (friendlyMessage.getPhotoUrl() == null) {
-                    viewHolder.messengerImageView.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,
+                    viewHolder.messengerImageView.setImageDrawable(ContextCompat.getDrawable(ChatActivity.this,
                             R.drawable.ic_account_circle_black_36dp));
                 } else {
-                    Glide.with(MainActivity.this)
+                    Glide.with(ChatActivity.this)
                             .load(friendlyMessage.getPhotoUrl())
                             .into(viewHolder.messengerImageView);
                 }
@@ -302,7 +316,7 @@ public class MainActivity extends AppCompatActivity
                         mUsername,
                         mPhotoUrl,
                         null /* no image */);
-                mFirebaseDatabaseReference.child(MESSAGES_CHILD)
+                mFirebaseDatabaseReference.child(topic)
                         .push().setValue(friendlyMessage);
                 mMessageEditText.setText("");
             }

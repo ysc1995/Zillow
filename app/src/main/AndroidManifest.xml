@@ -18,9 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.property.PropertyActivity">
-
-        </activity>
+        <activity android:name=".ui.property.PropertyActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,19 +31,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".map.MapFragActivity">
-
-        </activity>
+        <activity android:name=".map.MapFragActivity" />
         <activity android:name=".ui.property.AddPropertyActivity" />
         <activity android:name=".ui.MoreActivity" />
-        <activity android:name=".ui.tenant.TenantPropertyViewActivity">
-
-        </activity>
-        <activity android:name=".ui.TenantInfoActivity">
-
-
-        </activity>
-
+        <activity android:name=".ui.tenant.TenantPropertyViewActivity" />
+        <activity android:name=".ui.TenantInfoActivity" />
         <activity android:name=".ui.tenant.PropertyMapActivity" />
         <activity android:name=".crash.CrashAnazliticsActivity" />
 
@@ -60,15 +50,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.chat.SignInActivity">
-
-        </activity>
-
-        <activity android:name=".ui.chat.MainActivity">
-
-        </activity>
-
+        <activity android:name=".ui.chat.SignInActivity" />
+        <activity android:name=".ui.chat.ChatActivity" />
+        <activity android:name=".ui.chat.PreChatLandlordActivity" />
+        <activity android:name=".ui.chat.PreChatTenantActivity"></activity>
     </application>
 
 </manifest>
