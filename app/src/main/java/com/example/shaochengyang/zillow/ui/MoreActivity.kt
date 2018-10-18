@@ -1,5 +1,6 @@
 package com.example.shaochengyang.zillow.ui
 
+import android.content.ComponentName
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,8 @@ import android.view.MenuItem
 import android.view.View
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.ui.property.PropertyActivity
+import com.example.shaochengyang.zillow.ui.tenant.MarketActivity
+import kotlinx.android.synthetic.main.activity_more.*
 
 class MoreActivity : AppCompatActivity() {
 
@@ -17,7 +20,20 @@ class MoreActivity : AppCompatActivity() {
         setContentView(R.layout.activity_more)
 
         setSupportActionBar(findViewById<View>(R.id.toolbar_map) as Toolbar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        tv_market.setOnClickListener {
+            val i = Intent(this@MoreActivity, MarketActivity::class.java)
+            startActivity(i)
+        }
+
+        tv_calculator.setOnClickListener {
+            val i = Intent()
+            i.action = Intent.ACTION_MAIN
+            i.addCategory(Intent.CATEGORY_LAUNCHER)
+            i.component = ComponentName("com.android.calculator2", "com.android.calculator2.Calculator")
+            startActivity(i)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

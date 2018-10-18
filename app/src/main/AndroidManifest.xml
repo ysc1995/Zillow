@@ -43,6 +43,7 @@
             android:name="io.fabric.ApiKey"
             android:value="bccaf55c82db0117f068ef7f5d1e885223b3045c" />
 
+
         <activity android:name=".map.TestActivity"></activity>
         <activity android:name=".ui.chat.SignInActivity">
 
@@ -59,6 +60,9 @@
             </intent-filter>
 
         </activity>
+
+
+        <activity android:name=".ui.tenant.MarketActivity"></activity>
     </application>
 
 </manifest>

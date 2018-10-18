@@ -151,6 +151,7 @@ class TenantPropertyViewActivity : AppCompatActivity() {
             R.id.more_icon -> {
                 val i = Intent(this@TenantPropertyViewActivity, MoreActivity::class.java)
                 startActivity(i)
+
             }
 
         }

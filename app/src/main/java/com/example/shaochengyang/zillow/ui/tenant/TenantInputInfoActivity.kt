@@ -40,6 +40,8 @@ class TenantInputInfoActivity : AppCompatActivity() {
             var userEmail = et_email.text.toString()
             var userAddress = et_address.text.toString()
             var userMobile = et_mobile.text.toString()
+
+            //TODO check input validate
             viewModel.addTenant(userName,userEmail,userAddress,userMobile,userid,propertyId,this)
         }
 
