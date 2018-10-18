@@ -1,5 +1,6 @@
 package com.example.shaochengyang.zillow.map;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -34,5 +35,8 @@ public class TestActivity extends AppCompatActivity implements IDataManager.onAl
 
         i.putExtra("list",parcelist);
         startActivity(i);
+
+
+
     }
 }

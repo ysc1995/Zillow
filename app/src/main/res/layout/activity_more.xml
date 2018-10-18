@@ -1,10 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.MoreActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ImageView
+
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="0.5"
+            app:srcCompat="@drawable/ic_zillow_logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="550dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/sectionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Home Search"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            android:text="Recently Viewed"
+            android:textSize="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            android:text="Find an Agent"
+            android:textSize="20dp"
+
+            />
+
+        <TextView
+            style="@style/sectionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:text="Supporting Tools"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            android:text="Market Trends"
+            android:textSize="20dp"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_shoprate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            android:text="Shop Rates"
+            android:textSize="20dp"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_calculator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            android:text="Payment Calculator"
+            android:textSize="20dp"
+
+            />
+
+        <TextView
+            style="@style/sectionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:text="About Zillow"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            android:text="Contact us"
+            android:textSize="20dp"
+
+            />
+
+
+    </LinearLayout>
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_map"
@@ -12,9 +129,9 @@
         android:layout_height="50dp"
         android:layout_marginBottom="0dp"
         android:background="?attr/colorPrimary"
+        android:gravity="center"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
 
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
