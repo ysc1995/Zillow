@@ -81,6 +81,11 @@ class ViewModel : BaseObservable() {
         DataManager.getPropertyList(3,"landlord", this)
     }
 
+    fun refreshListTenant(){
+        mylist_tenant = mutableListOf()
+        DataManager.getTenantList(""+3, this)
+    }
+
     fun addTenant(userName: String, userEmail: String, userAddress: String, userMobile: String, userid: String, propertyId: String, tenantInputInfoActivity: TenantInputInfoActivity) {
         DataManager.addTenant(userName,userEmail,userAddress,userMobile,userid,propertyId,tenantInputInfoActivity)
     }

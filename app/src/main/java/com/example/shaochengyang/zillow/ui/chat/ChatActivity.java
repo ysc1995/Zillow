@@ -198,6 +198,10 @@ public class ChatActivity extends AppCompatActivity
 
         Log.d("MyTag", topic);
 
+        if(!topic.equals("andy_andrew")){
+            topic = MESSAGES_CHILD;
+        }
+
         //DatabaseReference messagesRef = mFirebaseDatabaseReference.child(MESSAGES_CHILD);
         DatabaseReference messagesRef = mFirebaseDatabaseReference.child(topic);
         FirebaseRecyclerOptions<FriendlyMessage> options =
