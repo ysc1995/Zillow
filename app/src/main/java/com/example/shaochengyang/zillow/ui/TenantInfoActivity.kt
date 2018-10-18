@@ -76,6 +76,9 @@ class TenantInfoActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
+            R.id.refresh_icon->{
+                viewModel.refreshListTenant()
+            }
         }
 
         return true;

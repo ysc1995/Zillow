@@ -89,7 +89,7 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
                 var intent = Intent(this@PropertyActivity, TenantInfoActivity::class.java)
                 startActivity(intent)
             }
-            R.id.more_icon->{
+            R.id.chat_icon->{
                 Log.d("MyFlavor",BuildConfig.FLAVOR)
                 if(BuildConfig.FLAVOR.equals("landlord")) {
                     var intent = Intent(this@PropertyActivity, PreChatLandlordActivity::class.java)
