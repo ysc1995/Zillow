@@ -69,6 +69,7 @@ class TenantPropertyViewActivity : AppCompatActivity() {
             i.putExtra("lati", lati)
             i.putExtra("long", longi)
             i.putExtra("price", price)
+
             startActivity(i)
         }
 
@@ -83,7 +84,10 @@ class TenantPropertyViewActivity : AppCompatActivity() {
             i.putExtra("address",address)
             i.putExtra("city",city)
             i.putExtra("state",state)
+            i.putExtra("country",country)
             i.putExtra("userid",userid)
+            i.putExtra("mortgage",mortgage)
+            i.putExtra("id",id)
             startActivity(i)
 
         }
