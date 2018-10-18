@@ -43,18 +43,25 @@
             android:name="io.fabric.ApiKey"
             android:value="bccaf55c82db0117f068ef7f5d1e885223b3045c" />
 
-        <activity android:name=".map.TestActivity">
+
+        <activity android:name=".map.TestActivity"></activity>
+        <activity android:name=".ui.chat.SignInActivity">
+
+        </activity>
+        <activity android:name=".ui.chat.ChatActivity" />
+        <activity android:name=".ui.chat.PreChatLandlordActivity" />
+        <activity android:name=".ui.chat.PreChatTenantActivity" />
+        <activity android:name=".ui.tenant.TenantInputInfoActivity" />
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".ui.chat.SignInActivity"></activity>
-        <activity android:name=".ui.chat.ChatActivity" />
-        <activity android:name=".ui.chat.PreChatLandlordActivity" />
-        <activity android:name=".ui.chat.PreChatTenantActivity" />
-        <activity android:name=".ui.tenant.TenantInputInfoActivity" />
+
+
         <activity android:name=".ui.tenant.MarketActivity"></activity>
     </application>
 

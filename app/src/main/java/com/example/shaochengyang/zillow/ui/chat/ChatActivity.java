@@ -17,6 +17,7 @@ package com.example.shaochengyang.zillow.ui.chat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -198,6 +199,10 @@ public class ChatActivity extends AppCompatActivity
 
         Log.d("MyTag", topic);
 
+        if(!topic.equals("andy_andrew")){
+            topic = MESSAGES_CHILD;
+        }
+
         //DatabaseReference messagesRef = mFirebaseDatabaseReference.child(MESSAGES_CHILD);
         DatabaseReference messagesRef = mFirebaseDatabaseReference.child(topic);
         FirebaseRecyclerOptions<FriendlyMessage> options =
@@ -252,6 +257,10 @@ public class ChatActivity extends AppCompatActivity
 
 
                 viewHolder.messengerTextView.setText(friendlyMessage.getName());
+                if(friendlyMessage.getName().equals(mUsername)){
+                    viewHolder.messageTextView.setBackgroundColor(getColor(R.color.colorChatOther));
+                    viewHolder.messengerTextView.setBackgroundColor(getColor(R.color.colorChatOther));
+                }
 
                 if (friendlyMessage.getPhotoUrl() == null) {
                     viewHolder.messengerImageView.setImageDrawable(ContextCompat.getDrawable(ChatActivity.this,
