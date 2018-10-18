@@ -1,13 +1,14 @@
 package com.example.shaochengyang.zillow.data.model;
 
 public class MapPassItem {
-    String longi, lati;
+    String longi, lati,price;
     int count;
 
-    public MapPassItem(String longi, String lati, int count) {
+    public MapPassItem(String longi, String lati, int count, String price) {
         this.longi = longi;
         this.lati = lati;
         this.count = count;
+        this.price = price;
     }
 
     public String getLongi() {
@@ -32,5 +33,13 @@ public class MapPassItem {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

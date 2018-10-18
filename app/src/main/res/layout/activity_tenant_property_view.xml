@@ -28,13 +28,14 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp">
 
 
                     <TextView
@@ -81,15 +82,24 @@
                         android:id="@+id/Img_map_marker"
                         android:layout_width="88dp"
                         android:layout_height="80dp"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="10dp"
                         android:src="@drawable/map_marker_icon" />
+
+                    <Button
+                        android:id="@+id/button_contactOwner"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#51ff45"
+                        android:text="Contact\n Owner"/>
 
                     <Button
                         android:id="@+id/button_rentthis"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
                         android:background="#51ff45"
                         android:text="Rent This\n Property" />
@@ -118,7 +128,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -134,6 +145,37 @@
                         android:layout_height="wrap_content"
                         android:text="Apartment"
                         android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Heating"
+                        android:textSize="19dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Forced air"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Parking"
+                        android:textSize="19dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Carport,\nOff street"
+                        android:textSize="18dp" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -153,7 +195,35 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tv_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No Data"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Cooling"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Central"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Mortgage"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_mortage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="No Data"
