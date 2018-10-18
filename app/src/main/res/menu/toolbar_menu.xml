@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/property_icon"
-               android:title="Search"
+    <item android:id="@+id/map_icon"
+               android:title="Map"
                app:showAsAction="always"
-               android:icon="@drawable/ic_search_black_24dp"
+               android:icon="@drawable/ic_map_black_24dp"
+
         >
     </item>
-    <item android:id="@+id/yourhome_icon"
+    <!--<item android:id="@+id/yourhome_icon"
         android:title="Your Home"
         app:showAsAction="always"
         android:icon="@drawable/ic_home_black_24dp"
-        />
+        />-->
     <item android:id="@+id/more_icon"
         android:title="More"
         app:showAsAction="always"

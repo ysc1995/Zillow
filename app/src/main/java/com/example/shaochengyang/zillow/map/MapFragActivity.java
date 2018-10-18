@@ -22,18 +22,20 @@ import java.util.List;
 import io.fabric.sdk.android.Fabric;
 
 public class MapFragActivity extends AppCompatActivity {
-
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
 
-
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar_map));
-
-
         setContentView(R.layout.activity_map_frag);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar_map));
+        toolbar = findViewById(R.id.toolbar_map);
+        toolbar.setTitle("");
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
 
 
     }
@@ -49,14 +51,14 @@ public class MapFragActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.property_icon:
-                Intent i_property = new Intent(MapFragActivity.this, PropertyActivity.class);
+            case R.id.map_icon:
+                Intent i_property = new Intent(MapFragActivity.this, TestActivity.class);
                 startActivity(i_property);
                 break;
-            case R.id.yourhome_icon:
+           /* case R.id.yourhome_icon:
                 Intent i_addProperty = new Intent(MapFragActivity.this,AddPropertyActivity.class);
                 startActivity(i_addProperty);
-                break;
+                break;*/
             case R.id.more_icon:
                 Intent i = new Intent(MapFragActivity.this,MoreActivity.class);
                 startActivity(i);

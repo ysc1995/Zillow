@@ -8,7 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.example.shaochengyang.zillow.R
-import com.example.shaochengyang.zillow.ui.property.AddPropertyActivity
 import com.example.shaochengyang.zillow.ui.property.PropertyActivity
 
 class MoreActivity : AppCompatActivity() {
@@ -30,14 +29,14 @@ class MoreActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.property_icon -> {
+            R.id.map_icon -> {
                 val i_property = Intent(this@MoreActivity, PropertyActivity::class.java)
                 startActivity(i_property)
             }
-            R.id.yourhome_icon -> {
+            /*R.id.yourhome_icon -> {
                 val i = Intent(this@MoreActivity, AddPropertyActivity::class.java)
                 startActivity(i)
-            }
+            }*/
 
         }
 
