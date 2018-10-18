@@ -32,7 +32,7 @@ class AddPropertyActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.property_icon -> {
+            R.id.map_icon -> {
                 val i_property = Intent(this@AddPropertyActivity, PropertyActivity::class.java)
                 startActivity(i_property)
             }

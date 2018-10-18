@@ -16,10 +16,10 @@ import com.anychart.enums.HoverMode
 import com.anychart.enums.Position
 import com.anychart.enums.TooltipPositionMode
 import com.example.shaochengyang.zillow.R
-import com.example.shaochengyang.zillow.data.IDataManager
-import com.example.shaochengyang.zillow.data.model.AllPropertyItem
-import com.example.shaochengyang.zillow.map.MapFragActivity
+import com.example.shaochengyang.zillow.map.TestActivity
 import com.example.shaochengyang.zillow.ui.MoreActivity
+import com.example.shaochengyang.zillow.ui.chat.ChatActivity
+import com.example.shaochengyang.zillow.ui.chat.PreChatTenantActivity
 import com.example.shaochengyang.zillow.ui.property.PropertyActivity
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.activity_tenant_property_view.*
@@ -34,7 +34,7 @@ class TenantPropertyViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_tenant_property_view)
 
         setSupportActionBar(findViewById<View>(R.id.toolbar_map) as Toolbar)
-
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
         showPriceChart()
 
         /*val list = intent.getParcelableArrayExtra("list")
@@ -74,7 +74,8 @@ class TenantPropertyViewActivity : AppCompatActivity() {
         }
 
         button_contactOwner.setOnClickListener{
-
+            val i = Intent(this@TenantPropertyViewActivity, PreChatTenantActivity::class.java)
+            startActivity(i)
         }
 
 
@@ -142,8 +143,8 @@ class TenantPropertyViewActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.property_icon -> {
-                val i_property = Intent(this@TenantPropertyViewActivity, PropertyActivity::class.java)
+            R.id.map_icon -> {
+                val i_property = Intent(this@TenantPropertyViewActivity, TestActivity::class.java)
                 startActivity(i_property)
             }
             R.id.more_icon -> {

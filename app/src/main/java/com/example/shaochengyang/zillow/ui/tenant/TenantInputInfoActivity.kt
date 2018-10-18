@@ -3,6 +3,7 @@ package com.example.shaochengyang.zillow.ui.tenant
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.map.TestActivity
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
@@ -48,6 +49,7 @@ class TenantInputInfoActivity : AppCompatActivity() {
     }
 
     fun successfullyAdded() {
+        Toast.makeText(this, "Congregations! Successfully Rented the house!", Toast.LENGTH_LONG).show()
         val i = Intent(this@TenantInputInfoActivity, TestActivity::class.java)
         startActivity(i)
     }
