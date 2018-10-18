@@ -62,7 +62,7 @@ class TenantInfoActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         when(item?.itemId){
-            R.id.more_icon->{
+            R.id.chat_icon->{
                 Log.d("MyFlavor", BuildConfig.FLAVOR)
                 if(BuildConfig.FLAVOR.equals("landlord")) {
                     var intent = Intent(this@TenantInfoActivity, PreChatLandlordActivity::class.java)
