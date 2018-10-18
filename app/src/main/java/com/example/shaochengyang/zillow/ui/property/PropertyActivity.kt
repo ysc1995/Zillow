@@ -35,6 +35,8 @@ class PropertyActivity : AppCompatActivity() , iPropertyActivity {
         val binding: ActivityPropertyBinding = DataBindingUtil.setContentView(this, R.layout.activity_property)
 
         setSupportActionBar(toolbar_property)
+        getSupportActionBar()?.setTitle(null)
+
         val adapter = PropertyItemAdapter(object : MyListener{
             override fun onItemClicked(myProperty: PropertyItem) {
                 Log.d("MyTag", myProperty.id +" "+ myProperty.propertyaddress+" "+myProperty.propertycity)

@@ -2,9 +2,12 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorFragBackground">#bdf7f2</color>
     <color name="colorChatBackgroundself">#88e7dd</color>
     <color name="colorChatBackgroundother">#b4f290</color>
+    <color name="colorSignInBackGround">#3b57ec</color>
+    <color name="colorCardBackGround">#eaffb9</color>
+
 </resources>
