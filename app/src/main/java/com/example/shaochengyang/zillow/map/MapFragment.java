@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MapFragment extends Fragment implements
-        ActivityCompat.OnRequestPermissionsResultCallback{
+        ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final String TAG = "MapViewFragment";
 
@@ -39,8 +39,8 @@ public class MapFragment extends Fragment implements
     private GoogleMap mMap;
 
 
-    String departLati ;
-    String departLong ;
+    String departLati;
+    String departLong;
     String price;
     int count;
     List<AllPropertyItem> list;
@@ -51,7 +51,6 @@ public class MapFragment extends Fragment implements
     /*IDataManager iDataManager;*/
 
 
-
     @Override
     public synchronized View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_map, container, false);
@@ -59,20 +58,20 @@ public class MapFragment extends Fragment implements
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
 
-       /* iDataManager = new DataManager();*/
+        /* iDataManager = new DataManager();*/
         /*iDataManager.getAllPropertyInfo(this);*/
 
         MapFragActivity mapFragActivity = (MapFragActivity) getActivity();
         list = mapFragActivity.getList();
         //List<MapPassItem> passList = new ArrayList<>();
         List<AllPropertyItem> passList = new ArrayList<>();
-        for(int i = 0 ; i < list.size(); i++){
-            if(!list.get(i).getPropertylatitude().equals("")&&!list.get(i).getPropertylongitude().equals("")) {
+        for (int i = 0; i < list.size(); i++) {
+            if (!list.get(i).getPropertylatitude().equals("") && !list.get(i).getPropertylongitude().equals("")) {
                 price = list.get(i).getPropertypurchaseprice();
                 String lati = list.get(i).getPropertylatitude();
                 String longi = list.get(i).getPropertylongitude();
 
-                MapPassItem mapPassItem = new MapPassItem(lati,longi,i,price);
+                MapPassItem mapPassItem = new MapPassItem(lati, longi, i, price);
                 AllPropertyItem allPropertyItem = list.get(i);
                 //passList.add(mapPassItem);
                 passList.add(allPropertyItem);
@@ -98,24 +97,22 @@ public class MapFragment extends Fragment implements
     private void setLocation(final List<AllPropertyItem> passList) {
 
 
-
-
         mMapView.getMapAsync(new OnMapReadyCallback() {
                                  @Override
                                  public void onMapReady(GoogleMap googleMap) {
                                      mMap = googleMap;
-                                     for(int i = 0 ; i < passList.size() ; i++){
-                                         departLati=passList.get(i).getPropertylatitude();
+                                     for (int i = 0; i < passList.size(); i++) {
+                                         departLati = passList.get(i).getPropertylatitude();
                                          departLong = passList.get(i).getPropertylongitude();
                                          /*count = passList.get(i).getCount();*/
                                          price = passList.get(i).getPropertypurchaseprice();
 
                                          LatLng fromCity = new LatLng(Double.parseDouble(departLati),
                                                  Double.parseDouble(departLong));
-                                         MarkerOptions markerOptions = new MarkerOptions().position(fromCity).title("$"+price+"/mo").snippet(passList.get(i).getPropertyaddress() +", "+passList.get(i).getPropertycity()+", "+passList.get(i).getPropertystate()+", "+passList.get(i).getPropertycountry());
+                                         MarkerOptions markerOptions = new MarkerOptions().position(fromCity).title("$" + price + "/mo").snippet(passList.get(i).getPropertyaddress() + ", " + passList.get(i).getPropertycity() + ", " + passList.get(i).getPropertystate() + ", " + passList.get(i).getPropertycountry());
 
                                          marker = mMap.addMarker(markerOptions);
-                                         if(!marker.isInfoWindowShown()){
+                                         if (!marker.isInfoWindowShown()) {
                                              marker.showInfoWindow();
                                          }
                                          customObj = passList.get(i);
@@ -124,15 +121,9 @@ public class MapFragment extends Fragment implements
                                      }
 
 
-
-
-
-                                     mMap.setOnMarkerClickListener(new OnMarkerClickListener(){
-
+                                     mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                                          @Override
-                                         public boolean onMarkerClick(Marker marker) {
-
-
+                                         public void onInfoWindowClick(Marker marker) {
                                              Intent i = new Intent(getActivity(), TenantPropertyViewActivity.class);
                                              /*i.putExtra("lati",marker.getPosition().latitude);
                                              i.putExtra("long",marker.getPosition().longitude);*/
@@ -147,25 +138,38 @@ public class MapFragment extends Fragment implements
                                              }*/
 
                                              //i.putExtra("list",parcelist);
-                                             i.putExtra("price",myCustomObj.getPropertypurchaseprice());
-                                             i.putExtra("address",myCustomObj.getPropertyaddress());
-                                             i.putExtra("city",myCustomObj.getPropertycity());
-                                             i.putExtra("state",myCustomObj.getPropertystate());
-                                             i.putExtra("country",myCustomObj.getPropertycountry());
-                                             i.putExtra("userid",myCustomObj.getPropertyuserid());
-                                             i.putExtra("lati",myCustomObj.getPropertylatitude());
-                                             i.putExtra("longi",myCustomObj.getPropertylongitude());
-                                             i.putExtra("mortgage",myCustomObj.getPropertymortageinfo());
-                                             i.putExtra("id",myCustomObj.getId());
+                                             i.putExtra("price", myCustomObj.getPropertypurchaseprice());
+                                             i.putExtra("address", myCustomObj.getPropertyaddress());
+                                             i.putExtra("city", myCustomObj.getPropertycity());
+                                             i.putExtra("state", myCustomObj.getPropertystate());
+                                             i.putExtra("country", myCustomObj.getPropertycountry());
+                                             i.putExtra("userid", myCustomObj.getPropertyuserid());
+                                             i.putExtra("lati", myCustomObj.getPropertylatitude());
+                                             i.putExtra("longi", myCustomObj.getPropertylongitude());
+                                             i.putExtra("mortgage", myCustomObj.getPropertymortageinfo());
+                                             i.putExtra("id", myCustomObj.getId());
 
                                              startActivity(i);
+                                         }
+                                     });
+
+
+                                     mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
+
+                                         @Override
+                                         public boolean onMarkerClick(Marker marker) {
+
+
                                              //Toast.makeText(getActivity(), ""+marker.getTitle()+marker.getPosition().latitude+marker.getPosition(), Toast.LENGTH_SHORT).show();
                                              return false;
                                          }
-                                     } );
-
-
-
+                                     });
+                                     mMap.setOnInfoWindowLongClickListener(new GoogleMap.OnInfoWindowLongClickListener() {
+                                         @Override
+                                         public void onInfoWindowLongClick(Marker marker) {
+                                             marker.hideInfoWindow();
+                                         }
+                                     });
 
 
                                      mMap.getUiSettings().setZoomControlsEnabled(true);
@@ -264,7 +268,6 @@ public class MapFragment extends Fragment implements
 
 
     }*/
-
 
 
 }

@@ -9,6 +9,7 @@ import com.example.shaochengyang.zillow.data.DataManager
 import com.example.shaochengyang.zillow.data.IDataManager
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.model.TenantsItem
+import com.example.shaochengyang.zillow.ui.tenant.TenantInputInfoActivity
 
 
 class ViewModel : BaseObservable() {
@@ -79,5 +80,10 @@ class ViewModel : BaseObservable() {
         mylist = mutableListOf()
         DataManager.getPropertyList(3,"landlord", this)
     }
+
+    fun addTenant(userName: String, userEmail: String, userAddress: String, userMobile: String, userid: String, propertyId: String, tenantInputInfoActivity: TenantInputInfoActivity) {
+        DataManager.addTenant(userName,userEmail,userAddress,userMobile,userid,propertyId,tenantInputInfoActivity)
+    }
+
 
 }

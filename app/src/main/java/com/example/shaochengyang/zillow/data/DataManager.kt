@@ -3,11 +3,17 @@ package com.example.shaochengyang.zillow.data
 import android.util.Log
 import com.example.shaochengyang.zillow.data.model.PropertyItem
 import com.example.shaochengyang.zillow.data.network.NetworkHelper
+import com.example.shaochengyang.zillow.ui.tenant.TenantInputInfoActivity
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 class DataManager :IDataManager {
 
+
     companion object {
         val NetworkHelper : NetworkHelper = NetworkHelper()
+    }
+
+    override fun addTenant(userName: String, userEmail: String, userAddress: String, userMobile: String, userid: String, propertyId: String, t: TenantInputInfoActivity) {
+        NetworkHelper.addTenant(userName, userEmail, userAddress, userMobile, userid, propertyId, t)
     }
     override fun getPropertyList(i: Int, s: String, viewModel: ViewModel) {
         Log.d("MyTag","datamanager")

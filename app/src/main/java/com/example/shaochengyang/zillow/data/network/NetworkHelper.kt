@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.shaochengyang.zillow.data.IDataManager
 import com.example.shaochengyang.zillow.data.model.AllPropertyItem
 import com.example.shaochengyang.zillow.data.model.PropertyItem
+import com.example.shaochengyang.zillow.ui.tenant.TenantInputInfoActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -18,6 +19,25 @@ class NetworkHelper : INetworkHelper {
         val apiService = ApiService.create()
     }*/
     val apiService by lazy { ApiService.create() }
+
+    override fun addTenant(userName: String, userEmail: String, userAddress: String, userMobile: String, userid: String, propertyId: String, tenantInputInfoActivity: TenantInputInfoActivity) {
+        var call = apiService.addTenantonServer(userName,userEmail,userAddress,userMobile,propertyId,userid)
+        call . enqueue (object : retrofit2.Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+
+                Log.d("MyTag","Success")
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+
+                tenantInputInfoActivity.successfullyAdded()
+                Log.d("MyTag","Fail")
+            }
+        })
+
+
+    }
+
 
     override fun getAllPropertyInfo(listener : IDataManager.onAllPropertyInfoListener) {
         disposable = apiService.getAllPropertyInfo()

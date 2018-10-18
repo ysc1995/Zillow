@@ -30,6 +30,17 @@ interface ApiService {
         }
     }
 
+
+    //http://rjtmobile.com/aamir/property-mgmt/pro_mgt_add_tenants.php
+    // ?name=aam&email=afah@aah.com&address=complte%20address&mobile=9876543210&propertyid=40&landlordid=31
+    @PUT("pro_mgt_add_tenants.php")
+    fun addTenantonServer(@Query("name") name: String,
+                  @Query("email") email:String,
+                  @Query("address") address:String,
+                  @Query("mobile") mobile:String,
+                  @Query("propertyid") propertyid:String,
+                  @Query("landlordid") landlordid:String) :Call<String>
+
     /*http://rjtmobile.com/aamir/
     property-mgmt/property.php?
     userid=3&
