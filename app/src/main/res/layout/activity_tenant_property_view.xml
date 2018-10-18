@@ -12,16 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="610dp">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tv_propertyid"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:text="Property ID: "
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"/>
 
             <ImageView
                 android:id="@+id/floorplan"
                 android:layout_width="wrap_content"
                 android:layout_height="293dp"
+                android:layout_marginTop="10dp"
 
                 app:srcCompat="@drawable/floor_plan" />
 

@@ -8,6 +8,7 @@ import com.example.shaochengyang.zillow.R
 import com.example.shaochengyang.zillow.map.TestActivity
 import com.example.shaochengyang.zillow.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.activity_tenant_input_info.*
+import java.util.regex.Pattern
 
 class TenantInputInfoActivity : AppCompatActivity() {
     var viewModel = ViewModel()
@@ -36,13 +37,22 @@ class TenantInputInfoActivity : AppCompatActivity() {
 
 
         bt_submitRent.setOnClickListener {
+            var checkflag : Boolean = false
             var userName = et_name.text.toString()
             var userEmail = et_email.text.toString()
             var userAddress = et_address.text.toString()
             var userMobile = et_mobile.text.toString()
-
-            //TODO check input validate
-            viewModel.addTenant(userName,userEmail,userAddress,userMobile,userid,propertyId,this)
+            if(!Pattern.matches("^[0-9]{3,16}$",userMobile)){
+                Toast.makeText(this, "Invalidate Phone Number Input" , Toast.LENGTH_SHORT).show()
+                checkflag = true
+            }
+            /*if(!Pattern.matches("^[0-9]{3,16}$",userEmail)){
+                Toast.makeText(this, "Invalidate Phone Number Input" , Toast.LENGTH_SHORT).show()
+                checkflag = true
+            }*/
+            if(checkflag ==false) {
+                viewModel.addTenant(userName, userEmail, userAddress, userMobile, userid, propertyId, this)
+            }
         }
 
 

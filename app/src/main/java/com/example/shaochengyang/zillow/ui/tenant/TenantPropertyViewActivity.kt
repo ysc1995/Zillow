@@ -58,7 +58,7 @@ class TenantPropertyViewActivity : AppCompatActivity() {
         var id = intent.getStringExtra("id")
 
 
-
+        tv_propertyid.text = "Property ID: "+ id
         tv_address.text = address + ","
         tv_address2.text = city + ", " + state + ", " + country
         tv_payment.text = "Est.Refi.Payment: $" + price + "/mo"
