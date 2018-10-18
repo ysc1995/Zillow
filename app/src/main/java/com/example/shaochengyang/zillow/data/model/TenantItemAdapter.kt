@@ -43,10 +43,10 @@ class TenantItemAdapter(var listener_info: MyListener, var listener_remove: MyLi
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun bind(tenantsItem: TenantsItem, listener_info: MyListener, listener_remove: MyListener){
-               itemView.textView_tenant_name.text = tenantsItem.tenantname
-               itemView.textView_tenant_address.text = tenantsItem.tenantaddress
-               itemView.textView_tenant_email.text = tenantsItem.tenantemail
-               itemView.textView_tenant_mobile.text = tenantsItem.tenantmobile
+               itemView.textView_tenant_name.text = "Name: "+tenantsItem.tenantname
+               itemView.textView_tenant_address.text = "Address: "+tenantsItem.tenantaddress
+               itemView.textView_tenant_email.text = "email: "+tenantsItem.tenantemail
+               itemView.textView_tenant_mobile.text = "mobile: "+tenantsItem.tenantmobile
         }
 
     }

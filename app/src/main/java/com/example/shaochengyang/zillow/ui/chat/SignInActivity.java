@@ -23,7 +23,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.shaochengyang.zillow.BuildConfig;
 import com.example.shaochengyang.zillow.R;
+import com.example.shaochengyang.zillow.map.TestActivity;
 import com.example.shaochengyang.zillow.ui.property.PropertyActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -136,9 +138,15 @@ public class SignInActivity extends AppCompatActivity implements
                         } else {
                             FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                             //Log.d("MyTag","email: "+ mFirebaseUser.getEmail() +" "+mFirebaseUser.getPhoneNumber() );
-                            Intent i = new Intent(SignInActivity.this, PropertyActivity.class);
-                            i.putExtra("email", mFirebaseUser.getEmail() );
-                            startActivity(i);
+                            if(BuildConfig.FLAVOR.equals("landlord")) {
+                                Intent i = new Intent(SignInActivity.this, PropertyActivity.class);
+                                startActivity(i);
+                            }
+                            else{
+                                Intent i = new Intent(SignInActivity.this, TestActivity.class);
+                                startActivity(i);
+                            }
+
                             finish();
                         }
                     }
